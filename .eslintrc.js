@@ -23,7 +23,7 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
       webpack: {
-        config: path.resolve('webpack.config.js'),
+        config: path.resolve('webpack.config.ts'),
       },
       typescript: {},
     },

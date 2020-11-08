@@ -1,22 +1,31 @@
-const path = require('path');
-const webpack = require('webpack');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
-const sass = require('node-sass');
-const sassUtils = require('node-sass-utils')(sass);
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+import path from 'path';
+import * as webpack from 'webpack';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
+import StyleLintPlugin from 'stylelint-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import InterpolateHtmlPlugin from 'react-dev-utils/InterpolateHtmlPlugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-webpack-plugin';
+// import sass from 'node-sass';
+// import sassUtils from 'node-sass-utils';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import WebpackDevServer from 'webpack-dev-server';
+
+// sassUtils(sass);
 
 require('dotenv').config({
   path: path.resolve('.env'),
 });
 
+type Mode = 'development' | 'production' | 'none';
+
+interface Server extends WebpackDevServer {
+  listeningApp?: WebpackDevServer.ListeningApp;
+}
+
 const { env } = process;
-const mode = env.NODE_ENV || 'development';
+const mode: Mode = (env.NODE_ENV as Mode) || 'development';
 const isEnvProd = mode === 'production';
 const publicUrl = env.PUBLIC_URL || '';
 const appPath = env.APP_PATH || '/';
@@ -103,10 +112,9 @@ const plugins = [
   }),
 ];
 
-const outputFilename =
-  isEnvProd ? '[name].[contenthash].js' : '[name].js';
+const outputFilename = isEnvProd ? '[name].[contenthash].js' : '[name].js';
 
-let config = {
+let config: webpack.Configuration = {
   mode,
   context: process.cwd(),
   entry: './src/index.tsx',
@@ -149,7 +157,8 @@ let config = {
           {
             loader: 'sass-loader',
             options: {
-              additionalData: '@import "./src/assets/scss/variables/index.scss";',
+              additionalData:
+                '@import "./src/assets/scss/variables/index.scss";',
               // sassOptions: {
               //   ...(antVariables && {
               //     functions: {
@@ -228,8 +237,8 @@ let config = {
     historyApiFallback: true,
     overlay: true,
     publicPath: '/',
-    onListening({ listeningApp }) {
-      const { port: addressPort } = listeningApp.address();
+    onListening({ listeningApp }: Server) {
+      const { port: addressPort } = listeningApp?.address() || { port: '' };
       // eslint-disable-next-line no-console
       console.log(
         '\x1b[36m%s\x1b[0m',
@@ -243,7 +252,7 @@ let config = {
   devtool: '#eval-source-map',
 };
 
-if (analyzer) config.plugins.push(new BundleAnalyzerPlugin());
+if (analyzer) config.plugins?.push(new BundleAnalyzerPlugin());
 
 if (isEnvProd) {
   config = {
