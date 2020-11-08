@@ -7,13 +7,13 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import InterpolateHtmlPlugin from 'react-dev-utils/InterpolateHtmlPlugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-webpack-plugin';
-// import sass from 'node-sass';
-// import sassUtils from 'node-sass-utils';
+import sass from 'node-sass';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import WebpackDevServer from 'webpack-dev-server';
 
-// sassUtils(sass);
+import { palette } from './palette';
 
+const sassUtils = require('node-sass-utils')(sass);
 require('dotenv').config({
   path: path.resolve('.env'),
 });
@@ -22,6 +22,10 @@ type Mode = 'development' | 'production' | 'none';
 
 interface Server extends WebpackDevServer {
   listeningApp?: WebpackDevServer.ListeningApp;
+}
+
+interface SassString {
+  getValue: () => string;
 }
 
 const { env } = process;
@@ -169,20 +173,22 @@ let config: webpack.Configuration = {
             options: {
               additionalData:
                 '@import "./src/assets/scss/variables/index.global.scss";',
-              // sassOptions: {
-              //   ...(antVariables && {
-              //     functions: {
-              //       'get($keys)': function (keys) {
-              //         const keysSplitted = keys.getValue().split('.');
-              //         let result = antVariables;
-              //         keysSplitted.forEach((key) => {
-              //           result = result[key];
-              //         });
-              //         return sassUtils.castToSass(result);
-              //       },
-              //     },
-              //   }),
-              // },
+              sassOptions: {
+                functions: {
+                  'get($keys)': function (keys: SassString) {
+                    const keysSplitted = keys.getValue().split('.');
+                    let result: string | null = null;
+
+                    keysSplitted.forEach((key) => {
+                      if (key in palette) {
+                        result = palette[key as keyof typeof palette];
+                      }
+                    });
+
+                    return sassUtils.castToSass(result || palette);
+                  },
+                },
+              },
             },
           },
         ],
