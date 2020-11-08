@@ -145,20 +145,30 @@ let config: webpack.Configuration = {
           'style-loader',
           {
             loader: 'css-loader',
-            // options: {
-            //   localsConvention: 'dashes',
-            //   modules: {
-            //     mode: 'local',
-            //     localIdentName: '[path]-[local]',
-            //     context: path.resolve('src/components'),
-            //   },
-            // },
+            options: {
+              modules: {
+                mode(resourcePath: string) {
+                  if (/pure.scss$/i.test(resourcePath)) {
+                    return 'pure';
+                  }
+
+                  if (/global.scss$/i.test(resourcePath)) {
+                    return 'global';
+                  }
+
+                  return 'local';
+                },
+                exportLocalsConvention: 'dashes',
+                localIdentName: '[path]-[local]',
+                localIdentContext: path.resolve('src/components'),
+              },
+            },
           },
           {
             loader: 'sass-loader',
             options: {
               additionalData:
-                '@import "./src/assets/scss/variables/index.scss";',
+                '@import "./src/assets/scss/variables/index.global.scss";',
               // sassOptions: {
               //   ...(antVariables && {
               //     functions: {
