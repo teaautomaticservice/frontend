@@ -11,7 +11,7 @@ import sass from 'node-sass';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import WebpackDevServer from 'webpack-dev-server';
 
-import { palette } from './palette';
+import { theme } from './src/theme';
 
 const sassUtils = require('node-sass-utils')(sass);
 require('dotenv').config({
@@ -175,17 +175,27 @@ let config: webpack.Configuration = {
                 '@import "./src/assets/scss/variables/index.global.scss";',
               sassOptions: {
                 functions: {
-                  'get($keys)': function (keys: SassString) {
-                    const keysSplitted = keys.getValue().split('.');
-                    let result: string | null = null;
+                  'get($keys)': (keys: SassString) => {
+                    type Result = string | Record<string, unknown> | undefined;
+
+                    const keysValue = keys.getValue();
+                    const keysSplitted = keysValue.split('.');
+
+                    let result: Result = theme;
 
                     keysSplitted.forEach((key) => {
-                      if (key in palette) {
-                        result = palette[key as keyof typeof palette];
+                      if (result && typeof result === 'object') {
+                        result = result[key] as Result;
                       }
                     });
 
-                    return sassUtils.castToSass(result || palette);
+                    if (!result) {
+                      throw new Error(
+                        `Keys '${keysValue}' in theme not found.`
+                      );
+                    }
+
+                    return sassUtils.castToSass(result || theme);
                   },
                 },
               },
