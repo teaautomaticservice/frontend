@@ -3,27 +3,27 @@ import React from 'react';
 import { PagesUi } from '~/components/pages/ui/PagesUi';
 import { PagesNotFound } from '~/components/pages/not-found/PagesNotFound';
 
-enum RoutesHref {
+enum RouterHref {
   Main = '/',
   NotFound = '*',
 }
 
 type RouterConfig = {
-  href: RoutesHref;
+  href: RouterHref;
   component: () => JSX.Element;
   exact?: boolean;
 };
 
 const routerConfig: RouterConfig[] = [
   {
-    href: RoutesHref.Main,
+    href: RouterHref.Main,
     component: () => <PagesUi />,
   },
   {
-    href: RoutesHref.NotFound,
+    href: RouterHref.NotFound,
     exact: false,
     component: () => <PagesNotFound />,
   },
 ];
 
-export { routerConfig, RoutesHref };
+export { routerConfig, RouterHref };
