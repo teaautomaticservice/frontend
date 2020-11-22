@@ -24,6 +24,11 @@ module.exports = {
       },
       webpack: {
         config: path.resolve('webpack.config.ts'),
+        resolve: {
+          alias: {
+            '~': path.resolve('src/'),
+          },
+        },
       },
       typescript: {},
     },
