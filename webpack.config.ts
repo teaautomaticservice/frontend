@@ -189,13 +189,11 @@ let config: webpack.Configuration = {
                       }
                     });
 
-                    if (!result) {
-                      throw new Error(
-                        `Keys '${keysValue}' in theme not found.`
-                      );
+                    if (result) {
+                      return sassUtils.castToSass(result);
                     }
 
-                    return sassUtils.castToSass(result || theme);
+                    throw new Error(`Keys '${keysValue}' in theme not found.`);
                   },
                 },
               },
