@@ -3,15 +3,15 @@ $activeBrand: get("dynamicColors.activeBrand");
 $hoverOnBrand: get("dynamicColors.hoverOnBrand");
 $focusOnBrand: get("dynamicColors.focusOnBrand");
 
-$primary: get("backgroundColors.primary");
-$secondary: get("backgroundColors.secondary");
-$fade: get("backgroundColors.fade");
-$dark: get("backgroundColors.dark");
+$bgPrimary: get("backgroundColors.bgPrimary");
+$bgSecondary: get("backgroundColors.bgSecondary");
+$bgFade: get("backgroundColors.bgFade");
+$bgDark: get("backgroundColors.bgDark");
 
-$primary: get("textColors.primary");
-$secondary: get("textColors.secondary");
-$tertiary: get("textColors.tertiary");
-$invert: get("textColors.invert");
+$textPrimary: get("textColors.textPrimary");
+$textSecondary: get("textColors.textSecondary");
+$textTertiary: get("textColors.textTertiary");
+$textInvert: get("textColors.textInvert");
 
 $success: get("statusColors.success");
 $negative: get("statusColors.negative");

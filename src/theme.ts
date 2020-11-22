@@ -6,17 +6,17 @@ const dynamicColors = {
 };
 
 const backgroundColors = {
-  primary: '#fff',
-  secondary: '#f3f2ee',
-  fade: 'rgba(31, 32, 34, 0.64)',
-  dark: '#252629',
+  bgPrimary: '#fff',
+  bgSecondary: '#f3f2ee',
+  bgFade: 'rgba(31, 32, 34, 0.64)',
+  bgDark: '#252629',
 };
 
 const textColors = {
-  primary: '#252629',
-  secondary: '#737880',
-  tertiary: '#b3bbc7',
-  invert: '#fff',
+  textPrimary: '#252629',
+  textSecondary: '#737880',
+  textTertiary: '#b3bbc7',
+  textInvert: '#fff',
 };
 
 const statusColors = {
