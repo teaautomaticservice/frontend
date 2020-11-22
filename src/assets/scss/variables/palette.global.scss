@@ -1,22 +1,22 @@
-$brand: get('dynamicColors.brand');
-$hoverOnBrand: get('dynamicColors.hoverOnBrand');
-$inputOnBrand: get('dynamicColors.inputOnBrand');
-$linkBrand: get('dynamicColors.linkBrand');
-$textOnBrand: get('dynamicColors.textOnBrand');
+$brand: get("dynamicColors.brand");
+$activeBrand: get("dynamicColors.activeBrand");
+$hoverOnBrand: get("dynamicColors.hoverOnBrand");
+$focusOnBrand: get("dynamicColors.focusOnBrand");
 
-$primary: get('backgroundColors.primary');
-$secondary: get('backgroundColors.secondary');
-$fade: get('backgroundColors.fade');
+$primary: get("backgroundColors.primary");
+$secondary: get("backgroundColors.secondary");
+$fade: get("backgroundColors.fade");
+$dark: get("backgroundColors.dark");
 
-$primary: get('textColors.primary');
-$secondary: get('textColors.secondary');
-$tertiary: get('textColors.tertiary');
-$invert: get('textColors.invert');
+$primary: get("textColors.primary");
+$secondary: get("textColors.secondary");
+$tertiary: get("textColors.tertiary");
+$invert: get("textColors.invert");
 
-$success: get('statusColors.success');
-$negative: get('statusColors.negative');
-$warning: get('statusColors.warning');
-$accidentOrange: get('statusColors.accidentOrange');
-$accidentBlue: get('statusColors.accidentBlue');
-$accidentGreen: get('statusColors.accidentGreen');
-$accidentDarkPurple: get('statusColors.accidentDarkPurple');
+$success: get("statusColors.success");
+$negative: get("statusColors.negative");
+$warning: get("statusColors.warning");
+$accidentOrange: get("statusColors.accidentOrange");
+$accidentBlue: get("statusColors.accidentBlue");
+$accidentGreen: get("statusColors.accidentGreen");
+$accidentDarkPurple: get("statusColors.accidentDarkPurple");

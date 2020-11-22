@@ -1,15 +1,15 @@
 const dynamicColors = {
   brand: '#0073b1',
-  hoverOnBrand: '#e31c46',
-  inputOnBrand: '#f7575d',
-  linkBrand: '#e50b35',
-  textOnBrand: '#fff',
+  activeBrand: '#0a66c2',
+  hoverOnBrand: '#004182',
+  focusOnBrand: '#09223b',
 };
 
 const backgroundColors = {
   primary: '#fff',
-  secondary: '#f2f4f7',
+  secondary: '#f3f2ee',
   fade: 'rgba(31, 32, 34, 0.64)',
+  dark: '#252629',
 };
 
 const textColors = {
