@@ -10,6 +10,7 @@ const RouterHistory: React.FC = () => {
   const switchesEls = routerConfig.map(({ href, component, exact = true }) => (
     <Route exact={exact} path={href} component={component} />
   ));
+
   return (
     <Router history={history}>
       <Switch>{switchesEls}</Switch>
