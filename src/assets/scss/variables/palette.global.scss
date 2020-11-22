@@ -1,2 +1,22 @@
-$active: red;
-$brand: get('brand');
+$brand: get("dynamicColors.brand");
+$activeBrand: get("dynamicColors.activeBrand");
+$hoverOnBrand: get("dynamicColors.hoverOnBrand");
+$focusOnBrand: get("dynamicColors.focusOnBrand");
+
+$bgPrimary: get("backgroundColors.bgPrimary");
+$bgSecondary: get("backgroundColors.bgSecondary");
+$bgFade: get("backgroundColors.bgFade");
+$bgDark: get("backgroundColors.bgDark");
+
+$textPrimary: get("textColors.textPrimary");
+$textSecondary: get("textColors.textSecondary");
+$textTertiary: get("textColors.textTertiary");
+$textInvert: get("textColors.textInvert");
+
+$success: get("statusColors.success");
+$negative: get("statusColors.negative");
+$warning: get("statusColors.warning");
+$accidentOrange: get("statusColors.accidentOrange");
+$accidentBlue: get("statusColors.accidentBlue");
+$accidentGreen: get("statusColors.accidentGreen");
+$accidentDarkPurple: get("statusColors.accidentDarkPurple");

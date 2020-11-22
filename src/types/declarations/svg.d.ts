@@ -1,5 +1,6 @@
+import { JSX } from 'react';
+
 declare module '*.svg' {
-  // TODO: Type of any should be removed.
-  const content: any;
+  const content: string | JSX.Element;
   export default content;
 }
