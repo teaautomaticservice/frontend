@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { theme } from '~/theme';
+import { LayoutsMain } from '~/components/layouts/main/Main';
 
 import styles from './PagesUi.scss';
 
@@ -32,12 +33,14 @@ const PagesUi: React.FC = () => {
   const statusColorsEls = getColorsEls(statusColors);
 
   return (
-    <div className={styles.pagesUi}>
-      {getColorsSection('dynamicColors', dynamicColorsEls)}
-      {getColorsSection('backgroundColors', backgroundColorsEls)}
-      {getColorsSection('textColors', textColorsEls)}
-      {getColorsSection('statusColors', statusColorsEls)}
-    </div>
+    <LayoutsMain>
+      <div className={styles.pagesUi}>
+        {getColorsSection('dynamicColors', dynamicColorsEls)}
+        {getColorsSection('backgroundColors', backgroundColorsEls)}
+        {getColorsSection('textColors', textColorsEls)}
+        {getColorsSection('statusColors', statusColorsEls)}
+      </div>
+    </LayoutsMain>
   );
 };
 
