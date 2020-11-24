@@ -1,5 +1,11 @@
 import React from 'react';
 
-const PagesNotFound: React.FC = () => <h1>Pages not found!</h1>;
+import { LayoutsMain } from '~/components/layouts/main/LayoutsMain';
+
+const PagesNotFound: React.FC = () => (
+  <LayoutsMain>
+    <h1>Pages not found!</h1>
+  </LayoutsMain>
+);
 
 export { PagesNotFound };
