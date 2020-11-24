@@ -1,15 +1,15 @@
 import React from 'react';
 
 import { Header } from '~/components/core/header/Header';
-import { Navbar } from '~/components/core/navbar/Navbar';
 import { Footer } from '~/components/core/footer/Footer';
+
+import styles from './LayoutsMain.scss';
 
 const LayoutsMain: React.FC = ({ children }) => {
   return (
-    <div>
+    <div className={styles.layoutsMain}>
       <Header />
-      <Navbar />
-      <div>{children}</div>
+      <div className={styles.layoutsMain__content}>{children}</div>
       <Footer />
     </div>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { theme } from '~/theme';
-import { LayoutsMain } from '~/components/layouts/main/Main';
+import { LayoutsMain } from '~/components/layouts/main/LayoutsMain';
 
 import styles from './PagesUi.scss';
 

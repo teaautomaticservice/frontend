@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  height: 56px;
+  padding: 0 50px;
+  width: 100%;
+  background-color: $bgPrimary;
+
+  &__container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+}

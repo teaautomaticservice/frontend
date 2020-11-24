@@ -1,0 +1,12 @@
+.layouts-main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  &__content {
+    padding: 30px 50px;
+    width: 100%;
+    background-color: $bgSecondary;
+    flex-grow: 1;
+  }
+}

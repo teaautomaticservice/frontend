@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LayoutsMain } from '~/components/layouts/main/Main';
+import { LayoutsMain } from '~/components/layouts/main/LayoutsMain';
 
 const PagesNotFound: React.FC = () => (
   <LayoutsMain>
