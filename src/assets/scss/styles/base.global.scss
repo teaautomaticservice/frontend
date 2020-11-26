@@ -36,12 +36,23 @@ body {
 a {
   text-decoration: none;
   outline: 0;
-  // color: $baseColor;
+  color: $hoverOnBrand;
+  fill: $hoverOnBrand;
   cursor: pointer;
   transition: color 0.2s, fill 0.2s ease;
 
   &:focus {
     box-shadow: 0 0 10px 0 $brand;
+  }
+
+  &:hover {
+    color: $hoverOnBrand;
+    fill: $hoverOnBrand;
+  }
+
+  &:active {
+    color: $activeBrand;
+    fill: $activeBrand;
   }
 }
 
