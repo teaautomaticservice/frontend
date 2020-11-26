@@ -8,7 +8,7 @@ const history = createBrowserHistory();
 
 const RouterHistory: React.FC = () => {
   const switchesEls = routerConfig.map(({ href, component, exact = true }) => (
-    <Route exact={exact} path={href} component={component} />
+    <Route key={href} exact={exact} path={href} component={component} />
   ));
 
   return (

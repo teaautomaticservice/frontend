@@ -9,6 +9,7 @@ const backgroundColors = {
   bgPrimary: '#fff',
   bgSecondary: '#f3f2ee',
   bgFade: 'rgba(31, 32, 34, 0.64)',
+  bgShadow: 'rgba(46, 48, 51, 0.08)',
   bgDark: '#252629',
 };
 

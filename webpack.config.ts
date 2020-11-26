@@ -53,11 +53,6 @@ const babelLoaderOptions = {
     ],
     '@babel/preset-react',
   ],
-  plugins: [
-    '@babel/plugin-proposal-optional-chaining',
-    'dynamic-import-node',
-    '@babel/plugin-proposal-class-properties',
-  ],
 };
 
 const plugins = [

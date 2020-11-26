@@ -1,6 +1,4 @@
-import { JSX } from 'react';
-
 declare module '*.svg' {
-  const content: string | JSX.Element;
+  const content: string | React.FC<React.SVGProps<SVGSVGElement>>;
   export default content;
 }
