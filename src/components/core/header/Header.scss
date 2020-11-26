@@ -6,7 +6,6 @@
   width: 100%;
   background-color: $bgPrimary;
   box-shadow: 0 2px 4px $bgShadow;
-  $parent: &;
 
   &__logo-container {
     display: flex;
@@ -24,30 +23,5 @@
     border-radius: 5px;
     color: $brand;
     fill: $brand;
-    font-weight: 700;
-  }
-
-  &__logo {
-    width: 35px;
-    height: 35px;
-
-    & + #{$parent}__logo-description-container {
-      margin-left: 10px;
-    }
-  }
-
-  &__logo-description-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-top: 3px;
-  }
-
-  &__logo-description {
-    display: block;
-
-    &_heading {
-      text-transform: uppercase;
-    }
   }
 }

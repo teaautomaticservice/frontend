@@ -1,0 +1,30 @@
+.label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  $parent: &;
+
+  &__logo {
+    width: 35px;
+    height: 35px;
+
+    & + #{$parent}__description-container {
+      margin-left: 10px;
+    }
+  }
+
+  &__description-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__description {
+    display: block;
+
+    &_heading {
+      text-transform: uppercase;
+    }
+  }
+}
