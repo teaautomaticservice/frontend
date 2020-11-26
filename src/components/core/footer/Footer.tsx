@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 
 import { Label } from '~/components/core/label/Label';
 
@@ -11,14 +10,7 @@ const Footer: React.FC = () => {
       <Label />
       <div className={styles.footer__descriptionContainer}>
         <span className={styles.footer__description}>Created by DahakaLab</span>
-        <span
-          className={classNames(
-            styles.footer__description,
-            styles.footer__description_heading
-          )}
-        >
-          2020
-        </span>
+        <span className={styles.footer__description}>2020</span>
       </div>
     </div>
   );
