@@ -21,9 +21,10 @@ body {
   // font-family: $proximaNova;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  // color: $baseColor;
+  color: $textPrimary;
+  fill: $textPrimary;
   font-size: 16px;
-  // background-color: $background;
+  background-color: $bgSecondary;
 }
 
 #root {
