@@ -1,13 +1,12 @@
 import React from 'react';
 
 import { LayoutsMain } from '~/components/layouts/main/LayoutsMain';
-
-import styles from './PagesAuthorization.scss';
+import { Authorization } from '~/components/base/authorization/Authorization';
 
 const PagesAuthorization: React.FC = () => {
   return (
     <LayoutsMain>
-      <div className={styles.pagesAuthorization}>Authorizations</div>
+      <Authorization />
     </LayoutsMain>
   );
 };
