@@ -36,6 +36,7 @@ module.exports = {
   rules: {
     'react/prop-types': 0,
     '@typescript-eslint/explicit-module-boundary-types': 0,
+    '@typescript-eslint/no-empty-interface': 0,
     'no-plusplus': 0,
     'prettier/prettier': [
       'error',

@@ -2,6 +2,10 @@ import React from 'react';
 import classNames from 'classnames';
 
 import styles from './Authorization.scss';
+import {
+  AuthorizationForm,
+  AuthorizationFormType,
+} from './form/AuthorizationForm';
 import { AuthorizationDescription } from './description/AuthorizationDescription';
 
 const Authorization: React.FC = () => {
@@ -13,7 +17,14 @@ const Authorization: React.FC = () => {
           styles.authorization__section_form
         )}
       >
-        Form
+        <AuthorizationForm
+          className={styles.authorization__form}
+          formType={AuthorizationFormType.LogIn}
+        />
+        <AuthorizationForm
+          className={styles.authorization__form}
+          formType={AuthorizationFormType.Registration}
+        />
       </div>
       <div
         className={classNames(
