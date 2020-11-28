@@ -1,28 +1,28 @@
 import React from 'react';
 
 import { PagesUi } from '~/components/pages/ui/PagesUi';
-import { PagesNotFound } from '~/components/pages/not-found/PagesNotFound';
+import { PagesAuthorization } from '~/components/pages/authorization/PagesAuthorization';
 
 enum RouterHref {
   Main = '/',
-  NotFound = '*',
+  Authorization = '/authorization',
 }
 
 type RouterConfig = {
-  href: RouterHref;
-  component: () => JSX.Element;
+  href?: RouterHref;
+  component: React.FC;
   exact?: boolean;
 };
 
 const routerConfig: RouterConfig[] = [
   {
     href: RouterHref.Main,
-    component: () => <PagesUi />,
+    component: PagesUi,
   },
   {
-    href: RouterHref.NotFound,
+    href: RouterHref.Authorization,
     exact: false,
-    component: () => <PagesNotFound />,
+    component: PagesAuthorization,
   },
 ];
 
