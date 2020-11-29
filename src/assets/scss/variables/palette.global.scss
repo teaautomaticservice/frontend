@@ -1,12 +1,14 @@
-$brand: get("dynamicColors.brand");
-$activeBrand: get("dynamicColors.activeBrand");
-$hoverOnBrand: get("dynamicColors.hoverOnBrand");
-$focusOnBrand: get("dynamicColors.focusOnBrand");
+$brand: get("coreColors.brand");
+$activeBrand: get("coreColors.activeBrand");
+$hoverOnBrand: get("coreColors.hoverOnBrand");
+$focusOnBrand: get("coreColors.focusOnBrand");
+$separator: get("coreColors.separator");
 
 $bgPrimary: get("backgroundColors.bgPrimary");
 $bgSecondary: get("backgroundColors.bgSecondary");
 $bgFade: get("backgroundColors.bgFade");
 $bgShadow: get("backgroundColors.bgShadow");
+$bgShadowDarken: get("backgroundColors.bgShadowDarken");
 $bgDark: get("backgroundColors.bgDark");
 
 $textPrimary: get("textColors.textPrimary");

@@ -5,7 +5,7 @@ import { LayoutsMain } from '~/components/layouts/main/LayoutsMain';
 
 import styles from './PagesUi.scss';
 
-const { dynamicColors, backgroundColors, textColors, statusColors } = theme;
+const { coreColors, backgroundColors, textColors, statusColors } = theme;
 
 const getColorsEls = (colors: Record<string, string>) => {
   return Object.values(colors).map((color) => (
@@ -27,7 +27,7 @@ const getColorsSection = (sectionName: string, childrens: JSX.Element[]) => (
 );
 
 const PagesUi: React.FC = () => {
-  const dynamicColorsEls = getColorsEls(dynamicColors);
+  const coreColorsEls = getColorsEls(coreColors);
   const backgroundColorsEls = getColorsEls(backgroundColors);
   const textColorsEls = getColorsEls(textColors);
   const statusColorsEls = getColorsEls(statusColors);
@@ -35,7 +35,7 @@ const PagesUi: React.FC = () => {
   return (
     <LayoutsMain>
       <div className={styles.pagesUi}>
-        {getColorsSection('dynamicColors', dynamicColorsEls)}
+        {getColorsSection('coreColors', coreColorsEls)}
         {getColorsSection('backgroundColors', backgroundColorsEls)}
         {getColorsSection('textColors', textColorsEls)}
         {getColorsSection('statusColors', statusColorsEls)}

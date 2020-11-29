@@ -3,36 +3,23 @@ import classNames from 'classnames';
 
 import styles from './UiButton.scss';
 
-export enum ButtonType {
-  Submit = 'submit',
-  Reset = 'reset',
-  Button = 'button',
-}
-
-interface Props {
+export interface Props
+  extends React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
   label?: string;
-  className?: string;
-  type?: ButtonType;
-  disabled?: boolean;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const UiButton: React.FC<Props> = ({
-  label,
-  className,
-  type = ButtonType.Button,
-  children,
-  disabled,
-  onClick,
-}) => {
+const UiButton: React.FC<Props> = (props) => {
+  const { label, className, type = 'button', children } = props;
   const content = label ? <span>{label}</span> : children;
 
   return (
     <button
+      {...props}
       type={type}
       className={classNames(styles.uiButton, className)}
-      disabled={disabled}
-      onClick={onClick}
     >
       {content}
     </button>
