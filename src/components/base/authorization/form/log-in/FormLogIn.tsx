@@ -9,7 +9,11 @@ import styles from './FormLogIn.scss';
 const FormLogIn: React.FC = () => {
   const { register, handleSubmit } = useForm();
 
-  const formSubmitHandler = (data: unknown) => console.log('Submit!', data);
+  const formSubmitHandler = handleSubmit((data: unknown) =>
+    // TODO: Mock handler
+    // eslint-disable-next-line no-console
+    console.log('Submit!', data)
+  );
 
   return (
     <div className={styles.formLogIn}>
@@ -19,16 +23,23 @@ const FormLogIn: React.FC = () => {
       <form
         action="/"
         className={styles.formLogIn__form}
-        onSubmit={handleSubmit(formSubmitHandler)}
+        onSubmit={formSubmitHandler}
       >
         <UiInput
-          ref={register()}
+          ref={register({ required: true })}
           className={styles.formLogIn__formInput}
           type="text"
-          name="userName"
-          placeholder="Имя"
+          name="login"
+          placeholder="Логин"
         />
-        <UiButton type="submit" label="Log in" />
+        <UiInput
+          ref={register({ required: true })}
+          className={styles.formLogIn__formInput}
+          type="password"
+          name="password"
+          placeholder="Пароль"
+        />
+        <UiButton type="submit" label="Войти" />
       </form>
     </div>
   );
