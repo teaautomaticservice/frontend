@@ -4,6 +4,8 @@
   flex-grow: 1;
 
   &__content {
+    display: flex;
+    flex-direction: column;
     padding: 30px 50px;
     width: 100%;
     flex-grow: 1;

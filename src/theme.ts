@@ -1,8 +1,9 @@
-const dynamicColors = {
+const coreColors = {
   brand: '#0073b1',
   activeBrand: '#0a66c2',
   hoverOnBrand: '#004182',
   focusOnBrand: '#09223b',
+  separator: '#e0e0e0',
 };
 
 const backgroundColors = {
@@ -10,6 +11,7 @@ const backgroundColors = {
   bgSecondary: '#f3f2ee',
   bgFade: 'rgba(31, 32, 34, 0.64)',
   bgShadow: 'rgba(46, 48, 51, 0.08)',
+  bgShadowDarken: 'rgba(0, 0, 0, 0.15)',
   bgDark: '#252629',
 };
 
@@ -31,7 +33,7 @@ const statusColors = {
 };
 
 const theme = {
-  dynamicColors,
+  coreColors,
   backgroundColors,
   textColors,
   statusColors,
