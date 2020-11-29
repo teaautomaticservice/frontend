@@ -8,6 +8,11 @@
     width: 100%;
     border: 1px solid $separator;
     border-radius: 4px;
+    transition: border-color $transition;
+
+    &:hover {
+      border-color: $brand;
+    }
 
     &:focus {
       box-shadow: 0 10px 30px $bgShadowDarken;

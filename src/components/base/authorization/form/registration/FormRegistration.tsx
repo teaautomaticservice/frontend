@@ -37,7 +37,7 @@ const FormRegistration: React.FC = () => {
           ref={register({ required: true })}
           className={styles.formRegistration__formInput}
           type="text"
-          name="surname"
+          name="lastName"
           placeholder="Фамилия"
         />
         <UiInput
