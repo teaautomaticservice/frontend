@@ -11,6 +11,7 @@ export interface Props
 
 const UiInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const { className } = props;
+
   return (
     <div className={classNames(styles.uiInput, className)}>
       <input {...props} ref={ref} className={styles.uiInput__input} />

@@ -7,6 +7,10 @@
   &__header {
     margin-bottom: 15px;
     text-align: center;
+
+    span {
+      display: block;
+    }
   }
 
   &_form {

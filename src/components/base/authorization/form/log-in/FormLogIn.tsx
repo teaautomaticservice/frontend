@@ -18,7 +18,7 @@ const FormLogIn: React.FC = () => {
   return (
     <div className={styles.formLogIn}>
       <div className={styles.formLogIn__header}>
-        <span className="font-caption">Войти</span>
+        <span className="font-caption">Вход</span>
       </div>
       <form
         action="/"

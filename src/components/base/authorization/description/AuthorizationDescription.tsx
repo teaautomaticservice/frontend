@@ -1,6 +1,7 @@
 import React from 'react';
 
 import LogoTeaSVG from '~/components/svg/logo-tea.svg';
+// import { UiLink } from '~/components/ui/link/UiLink';
 
 import styles from './AuthorizationDescription.scss';
 
