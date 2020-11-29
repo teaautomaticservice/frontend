@@ -41,7 +41,7 @@ a {
   color: $hoverOnBrand;
   fill: $hoverOnBrand;
   cursor: pointer;
-  transition: color 0.2s, fill 0.2s ease;
+  transition: color $transition, fill $transition;
 
   &:focus {
     box-shadow: 0 0 10px 0 $brand;

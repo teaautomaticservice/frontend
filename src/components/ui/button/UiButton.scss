@@ -1,0 +1,17 @@
+.ui-button {
+  padding: 20px 30px;
+  width: 100%;
+  background-color: $brand;
+  border-radius: 4px;
+  color: $textInvert;
+  font-weight: 600;
+  transition: background-color $transition;
+
+  &:hover {
+    background-color: $hoverOnBrand;
+  }
+
+  &:active {
+    background-color: $activeBrand;
+  }
+}
