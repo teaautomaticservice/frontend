@@ -13,6 +13,7 @@ export interface Props
 
 const UiButton: React.FC<Props> = (props) => {
   const { label, className, type = 'button', children } = props;
+
   const content = label ? <span>{label}</span> : children;
 
   return (

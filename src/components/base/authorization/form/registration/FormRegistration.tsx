@@ -18,8 +18,7 @@ const FormRegistration: React.FC = () => {
   return (
     <div className={styles.formRegistration}>
       <div className={styles.formRegistration__header}>
-        <span className="font-caption">Впервые у нас?</span>
-        <span className="font-title">Моментальная регистрация</span>
+        <span className="font-caption">Регистрация</span>
       </div>
       <form
         action="/"
@@ -47,7 +46,14 @@ const FormRegistration: React.FC = () => {
           name="login"
           placeholder="Логин"
         />
-        <UiButton type="submit" label="Регистрация" />
+        <UiInput
+          ref={register({ required: true })}
+          className={styles.formRegistration__formInput}
+          type="text"
+          name="mail"
+          placeholder="Почта"
+        />
+        <UiButton type="submit" label="Зарегистрироваться" />
       </form>
     </div>
   );

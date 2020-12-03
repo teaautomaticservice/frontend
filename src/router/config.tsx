@@ -2,10 +2,12 @@ import React from 'react';
 
 import { PagesUi } from '~/components/pages/ui/PagesUi';
 import { PagesAuthorization } from '~/components/pages/authorization/PagesAuthorization';
+import { PagesAbout } from '~/components/pages/about/PagesAbout';
 
 enum RouterHref {
   Main = '/',
   Authorization = '/authorization',
+  About = '/about',
 }
 
 type RouterConfig = {
@@ -21,8 +23,11 @@ const routerConfig: RouterConfig[] = [
   },
   {
     href: RouterHref.Authorization,
-    exact: false,
     component: PagesAuthorization,
+  },
+  {
+    href: RouterHref.About,
+    component: PagesAbout,
   },
 ];
 
