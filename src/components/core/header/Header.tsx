@@ -16,7 +16,14 @@ const Header: React.FC = () => {
         </Link>
       </div>
       <div className={styles.header__toolbarContainer}>
-        <UiAvatar />
+        <div className={styles.header__userWrapper}>
+          <button className={styles.header__toolbarButtonUser} type="button">
+            <UiAvatar />
+          </button>
+          <div className={styles.header__userDropdown}>
+            <span>Dropdown</span>
+          </div>
+        </div>
       </div>
     </div>
   );
