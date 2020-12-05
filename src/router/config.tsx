@@ -1,13 +1,15 @@
 import React from 'react';
 
-import { PagesUi } from '~/components/pages/ui/PagesUi';
+import { PagesMain } from '~/components/pages/main/PagesMain';
 import { PagesAuthorization } from '~/components/pages/authorization/PagesAuthorization';
 import { PagesAbout } from '~/components/pages/about/PagesAbout';
+import { PagesUiPreview } from '~/components/pages/ui/PagesUiPreview';
 
 enum RouterHref {
   Main = '/',
   Authorization = '/authorization',
   About = '/about',
+  UiPreview = '/ui-preview',
 }
 
 type RouterConfig = {
@@ -19,7 +21,7 @@ type RouterConfig = {
 const routerConfig: RouterConfig[] = [
   {
     href: RouterHref.Main,
-    component: PagesUi,
+    component: PagesMain,
   },
   {
     href: RouterHref.Authorization,
@@ -28,6 +30,10 @@ const routerConfig: RouterConfig[] = [
   {
     href: RouterHref.About,
     component: PagesAbout,
+  },
+  {
+    href: RouterHref.UiPreview,
+    component: PagesUiPreview,
   },
 ];
 
