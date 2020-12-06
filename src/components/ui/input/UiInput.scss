@@ -7,7 +7,7 @@
     padding: 20px;
     width: 100%;
     border: 1px solid $separator;
-    border-radius: 4px;
+    border-radius: $borderRadius;
     transition: border-color $transition;
 
     &:hover {
