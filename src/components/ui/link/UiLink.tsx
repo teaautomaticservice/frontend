@@ -7,7 +7,7 @@ import styles from './UiLink.scss';
 
 interface Props extends LinkProps {
   label?: string;
-  to: RouterHref;
+  to: RouterHref | string;
 }
 
 const UiLink: React.FC<Props> = (props) => {

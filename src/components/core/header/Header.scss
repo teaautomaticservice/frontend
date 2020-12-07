@@ -26,32 +26,12 @@
     fill: $brand;
   }
 
-  &__user-wrapper {
-    position: relative;
-  }
-
   &__toolbar-button-user {
     border-radius: 50%;
-    transition: $transition;
-
-    &:hover {
-      box-shadow: $focusedShadow $hoverOnBrand;
-    }
-
-    &:active {
-      box-shadow: $focusedShadow $activeBrand;
-    }
   }
 
   &__user-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    margin-top: 15px;
     width: 256px;
-    background-color: #fff;
-    box-shadow: $highlightedShadow;
-    border-radius: $borderRadius;
   }
 
   &__user-container {
