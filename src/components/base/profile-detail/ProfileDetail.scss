@@ -1,0 +1,32 @@
+.profile-detail {
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
+
+  &__avatar-container {
+    width: 200px;
+    margin-right: $mainSize;
+  }
+
+  &__avatar-wrapper {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: $smallSize;
+    width: 100%;
+    height: 300px;
+    background-color: $brand;
+    border-radius: 4px;
+  }
+
+  &__avatar-plug {
+    width: 140px;
+    height: 140px;
+  }
+
+  &__content-container {
+    width: 100%;
+  }
+}
