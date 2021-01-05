@@ -29,4 +29,10 @@
   &__content-container {
     width: 100%;
   }
+
+  &__content-section {
+    & + & {
+      margin-top: $mainSize;
+    }
+  }
 }
