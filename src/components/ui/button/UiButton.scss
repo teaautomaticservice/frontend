@@ -1,17 +1,52 @@
 .ui-button {
-  padding: 20px 30px;
+  padding: 20px;
   width: 100%;
-  background-color: $brand;
-  border-radius: 4px;
-  color: $textInvert;
+  border-radius: $borderRadius;
   font-weight: 600;
-  transition: background-color $transition;
+  transition:
+    color $transition,
+    background-color $transition;
 
-  &:hover {
-    background-color: $hoverOnBrand;
+  &_primary {
+    background-color: $brand;
+    color: $textInvert;
+
+    &:hover {
+      background-color: $hoverOnBrand;
+    }
+
+    &:active {
+      background-color: $activeBrand;
+    }
   }
 
-  &:active {
-    background-color: $activeBrand;
+  &_soft {
+    background-color: $softBrand;
+    color: $focusOnBrand;
+
+    &:hover {
+      background-color: $brand;
+      color: $textInvert;
+    }
+
+    &:active {
+      background-color: $activeBrand;
+      color: $textInvert;
+    }
+  }
+
+  &_label-only {
+    padding: 0 5px;
+    width: auto;
+    border-radius: 24px;
+    color: $textSecondary;
+
+    &:hover {
+      color: $brand;
+    }
+
+    &:active {
+      color: $activeBrand;
+    }
   }
 }

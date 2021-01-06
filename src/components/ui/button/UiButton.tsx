@@ -3,24 +3,47 @@ import classNames from 'classnames';
 
 import styles from './UiButton.scss';
 
+type UiButtonAppearance = 'primary' | 'soft' | 'edit';
+
+const modifierMap: Record<UiButtonAppearance, string> = {
+  primary: styles.uiButton_primary,
+  soft: styles.uiButton_soft,
+  edit: styles.uiButton_labelOnly,
+};
+
 export interface Props
   extends React.DetailedHTMLProps<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
+  appearance?: UiButtonAppearance;
   label?: string;
 }
 
 const UiButton: React.FC<Props> = (props) => {
-  const { label, className, type = 'button', children } = props;
+  const {
+    appearance = 'primary',
+    label,
+    className,
+    type = 'button',
+    children,
+  } = props;
 
-  const content = label ? <span>{label}</span> : children;
+  const isEditAppearance = appearance === 'edit';
+
+  const baseContent = label ? <span>{label}</span> : children;
+
+  const content = isEditAppearance ? <span>Изменить</span> : baseContent;
 
   return (
     <button
       {...props}
       type={type}
-      className={classNames(styles.uiButton, className)}
+      className={classNames(
+        styles.uiButton,
+        modifierMap[appearance],
+        className
+      )}
     >
       {content}
     </button>

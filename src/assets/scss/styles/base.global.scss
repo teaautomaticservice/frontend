@@ -44,7 +44,7 @@ a {
   transition: color $transition, fill $transition;
 
   &:focus {
-    box-shadow: 0 0 10px 0 $brand;
+    box-shadow: $focusedShadow $brand;
   }
 
   &:hover {
@@ -95,6 +95,6 @@ select {
   cursor: pointer;
 
   &:focus {
-    box-shadow: 0 0 10px 0 $brand;
+    box-shadow: $focusedShadow $brand;
   }
 }

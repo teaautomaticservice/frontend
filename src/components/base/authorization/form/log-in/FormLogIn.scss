@@ -5,7 +5,7 @@
   width: 100%;
 
   &__header {
-    margin-bottom: 15px;
+    margin-bottom: $smallSize;
   }
 
   &__form {
@@ -16,6 +16,6 @@
   }
 
   &__form-input {
-    margin-bottom: 15px;
+    margin-bottom: $smallSize;
   }
 }
