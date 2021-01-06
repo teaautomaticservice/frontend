@@ -22,6 +22,7 @@ interface Props {
 
 const AuthorizationForm: React.FC<Props> = ({ className, formType }) => {
   const FormComponent = formMap[formType];
+
   return (
     <div className={classNames(styles.authorizationForm, className)}>
       <FormComponent />
