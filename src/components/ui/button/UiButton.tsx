@@ -3,11 +3,12 @@ import classNames from 'classnames';
 
 import styles from './UiButton.scss';
 
-type UiButtonAppearance = 'primary' | 'soft';
+type UiButtonAppearance = 'primary' | 'soft' | 'edit';
 
 const modifierMap: Record<UiButtonAppearance, string> = {
   primary: styles.uiButton_primary,
   soft: styles.uiButton_soft,
+  edit: styles.uiButton_labelOnly,
 };
 
 export interface Props
@@ -28,7 +29,11 @@ const UiButton: React.FC<Props> = (props) => {
     children,
   } = props;
 
-  const content = label ? <span>{label}</span> : children;
+  const isEditAppearance = appearance === 'edit';
+
+  const baseContent = label ? <span>{label}</span> : children;
+
+  const content = isEditAppearance ? <span>Изменить</span> : baseContent;
 
   return (
     <button

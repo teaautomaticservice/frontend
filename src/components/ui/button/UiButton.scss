@@ -34,4 +34,19 @@
       color: $textInvert;
     }
   }
+
+  &_label-only {
+    padding: 0 5px;
+    width: auto;
+    border-radius: 24px;
+    color: $textSecondary;
+
+    &:hover {
+      color: $brand;
+    }
+
+    &:active {
+      color: $activeBrand;
+    }
+  }
 }

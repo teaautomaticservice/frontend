@@ -18,9 +18,32 @@ const ProfileDetail: React.FC = () => {
         </div>
         <UiButton appearance="soft" label="Изменить аватар" />
       </div>
+
       <div className={styles.profileDetail__contentContainer}>
         <div className={styles.profileDetail__contentSection}>
-          <h2>{userFullName}</h2>
+          <div className={styles.profileDetail__headingWrapper}>
+            <h2>{userFullName}</h2>
+            <UiButton
+              className={styles.profileDetail__buttonChange}
+              appearance="edit"
+            />
+          </div>
+        </div>
+
+        <div className={styles.profileDetail__contentSection}>
+          <div className={styles.profileDetail__headingWrapper}>
+            <h5>Контакты</h5>
+            <UiButton
+              className={styles.profileDetail__buttonChange}
+              appearance="edit"
+            />
+          </div>
+          <div>
+            <span className={styles.profileDetail__contentDescription}>
+              {'Телефон: '}
+            </span>
+            <span>{user.mainPhoneNumber}</span>
+          </div>
         </div>
       </div>
     </UiSection>

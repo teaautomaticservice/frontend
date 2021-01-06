@@ -35,4 +35,17 @@
       margin-top: $mainSize;
     }
   }
+
+  &__heading-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__button-change {
+    margin-left: $mainSize;
+  }
+
+  &__content-description {
+    font-weight: 700;
+  }
 }
