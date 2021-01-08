@@ -2,4 +2,14 @@
   &__section {
     border-radius: 0 $borderRadius $borderRadius $borderRadius;
   }
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    margin-bottom: $mainSize;
+  }
+
+  &__tabs {
+    margin-left: auto;
+  }
 }

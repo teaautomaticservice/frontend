@@ -1,6 +1,6 @@
 export type User = {
-  id: string;
+  id?: string;
   name: string;
   surname: string;
-  mainPhoneNumber: number;
+  mainPhoneNumber: string;
 };

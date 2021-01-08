@@ -13,7 +13,7 @@ export enum Subtype {
 }
 
 export type Detail = {
-  id: string;
+  id?: string;
   name: string;
   coast: string;
   orderDate: Date | null;
@@ -21,28 +21,39 @@ export type Detail = {
 };
 
 export type Client = {
-  id: string;
+  id?: string;
   name: string;
   surname: string;
   phone: string;
 };
 
 export type Organization = {
-  id: string;
+  id?: string;
   name: string;
   phone: string;
 };
 
 export type Notebook = {
-  id: number;
+  id?: number;
   subtype: Subtype;
   isNotLiquid: boolean;
   mark: string;
   model: string;
-  storageLocation: string | null;
-  costOfBuying: number | null;
-  requiredDetails: Detail[] | null;
-  costOfRepairing: number | null;
-  salePrice: number | null;
-  client: Client | Organization;
+  storageLocation?: string;
+  costOfBuying?: number;
+  requiredDetails?: Detail[];
+  costOfRepairing?: number;
+  salePrice?: number;
+  client?: Client | Organization;
 };
+
+export interface PostTakedNotebook {
+  subtype: Subtype;
+  isNotLiquid: boolean;
+  mark: string;
+  model: string;
+  storageLocation?: string;
+  costOfBuying?: number;
+  client: Client | Organization;
+  notes: string;
+}

@@ -1,0 +1,74 @@
+.ui-tabs {
+  display: flex;
+  $parent: &;
+
+  &__label {
+    cursor: pointer;
+
+    & + & {
+      margin-left: -1px;
+    }
+
+    &:hover {
+      z-index: 1;
+    }
+
+    &:first-child {
+      #{$parent}__wrapper {
+        border-radius: $borderRadius 0 0 $borderRadius;
+      }
+    }
+
+    &:last-child {
+      #{$parent}__wrapper {
+        border-radius: 0 $borderRadius $borderRadius 0;
+      }
+    }
+  }
+
+  &__input {
+    position: fixed;
+    right: 100vw;
+    bottom: 100vh;
+    opacity: 0;
+    height: 0;
+    width: 0;
+
+    &:checked {
+      & + #{$parent}__wrapper {
+        background-color: $brand;
+        color: $textInvert;
+        border-color: $brand;
+      }
+    }
+
+    &:focus {
+      & + #{$parent}__wrapper {
+        background-color: $focusOnBrand;
+        border-color: $focusOnBrand;
+        color: $textInvert;
+      }
+    }
+
+    &:hover {
+      & + #{$parent}__wrapper {
+        background-color: $hoverOnBrand;
+        border-color: $hoverOnBrand;
+        color: $textInvert;
+      }
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $smallSize $mainSize;
+    border: 1px solid $separator;
+    font-weight: 600;
+    transition:
+      border-color $transition,
+      background-color $transition,
+      color $transition;
+  }
+}

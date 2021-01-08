@@ -2,7 +2,7 @@ import React from 'react';
 
 import { UiSection } from '~/components/ui/section/UiSection';
 import { UiButton } from '~/components/ui/button/UiButton';
-import { user } from '~/mock/user';
+import { user } from '~/mock/profile';
 import PersonSVG from '~/components/svg/person.svg';
 
 import styles from './ProfileDetail.scss';
