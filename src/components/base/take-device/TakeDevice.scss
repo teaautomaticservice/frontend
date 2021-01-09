@@ -9,7 +9,13 @@
     margin-bottom: $mainSize;
   }
 
-  &__tabs {
+  &__radio {
     margin-left: auto;
+  }
+
+  &__form-item {
+    & + & {
+      margin-top: $smallSize;
+    }
   }
 }

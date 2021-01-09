@@ -25,12 +25,19 @@ export type Client = {
   name: string;
   surname: string;
   phone: string;
+  address: string;
+  isRegularCustomer: boolean;
 };
 
 export type Organization = {
   id?: string;
-  name: string;
-  phone: string;
+  organizationName: string;
+  organizationPhone: string;
+  organizationAddress: string;
+  confidantName: string;
+  confidantSurname: string;
+  confidantPhone: string;
+  isRegularCustomer: boolean;
 };
 
 export type Notebook = {
@@ -40,20 +47,25 @@ export type Notebook = {
   mark: string;
   model: string;
   storageLocation?: string;
-  costOfBuying?: number;
+  costOfBuying?: string;
   requiredDetails?: Detail[];
-  costOfRepairing?: number;
-  salePrice?: number;
+  costOfRepairing?: string;
+  salePrice?: string;
   client?: Client | Organization;
 };
 
+export enum ClientType {
+  Organization = 'Organization',
+  Individual = 'Individual',
+}
 export interface PostTakedNotebook {
   subtype: Subtype;
   isNotLiquid: boolean;
   mark: string;
   model: string;
-  storageLocation?: string;
-  costOfBuying?: number;
+  storageLocation: string;
+  costOfBuying: string;
+  clientType: ClientType;
   client: Client | Organization;
   notes: string;
 }

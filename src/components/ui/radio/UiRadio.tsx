@@ -2,14 +2,16 @@ import React from 'react';
 import classNames from 'classnames';
 import { UseFormMethods, RegisterOptions } from 'react-hook-form';
 
-import styles from './UiTabs.scss';
+import styles from './UiRadio.scss';
 
-export type TabItem = {
+export type TabItem<Value = string> = {
   label: string;
-  value: string;
+  value: Value;
   checked?: boolean;
   defaultChecked?: boolean;
 };
+
+export type onRadioChange = React.ChangeEventHandler<HTMLInputElement>;
 
 interface Props {
   className?: string;
@@ -20,7 +22,7 @@ interface Props {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-const UiTabs: React.FC<Props> = ({
+const UiRadio: React.FC<Props> = ({
   className,
   name,
   items,
@@ -29,10 +31,10 @@ const UiTabs: React.FC<Props> = ({
   onChange,
 }) => {
   const itemsEls = items.map(({ label, value, checked, defaultChecked }) => (
-    <label key={value} className={styles.uiTabs__label}>
+    <label key={value} className={styles.uiRadio__label}>
       <input
         ref={register(registerOptions)}
-        className={styles.uiTabs__input}
+        className={styles.uiRadio__input}
         type="radio"
         name={name}
         value={value}
@@ -40,13 +42,15 @@ const UiTabs: React.FC<Props> = ({
         defaultChecked={defaultChecked}
         onChange={onChange}
       />
-      <div className={styles.uiTabs__wrapper}>
+      <div className={styles.uiRadio__wrapper}>
         <span>{label}</span>
       </div>
     </label>
   ));
 
-  return <div className={classNames(styles.uiTabs, className)}>{itemsEls}</div>;
+  return (
+    <div className={classNames(styles.uiRadio, className)}>{itemsEls}</div>
+  );
 };
 
-export { UiTabs };
+export { UiRadio };
