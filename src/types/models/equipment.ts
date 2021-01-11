@@ -27,6 +27,7 @@ export type Client = {
   phone: string;
   address: string;
   isRegularCustomer: boolean;
+  notes: string[];
 };
 
 export type Organization = {
@@ -38,6 +39,7 @@ export type Organization = {
   confidantSurname: string;
   confidantPhone: string;
   isRegularCustomer: boolean;
+  notes: string[];
 };
 
 export type Notebook = {
@@ -46,6 +48,7 @@ export type Notebook = {
   isNotLiquid: boolean;
   mark: string;
   model: string;
+  notes?: string[];
   storageLocation?: string;
   costOfBuying?: string;
   requiredDetails?: Detail[];
@@ -67,5 +70,6 @@ export interface PostTakedNotebook {
   costOfBuying: string;
   clientType: ClientType;
   client: Client | Organization;
-  notes: string;
+  notebookNotes: string;
+  clientNotes: string;
 }

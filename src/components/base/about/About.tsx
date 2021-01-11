@@ -1,11 +1,13 @@
 import React from 'react';
 
+import { UiSection } from '~/components/ui/section/UiSection';
+
 import styles from './About.scss';
 
 const About: React.FC = () => {
   return (
     <div className={styles.about}>
-      <div className={styles.about__content}>
+      <UiSection className={styles.about__content}>
         <h2>Немного о нас:</h2>
         <p className="font-article">
           Чайный сервис - это сервис автоматизации процессов который создан
@@ -24,7 +26,7 @@ const About: React.FC = () => {
           существуют в условиях чрезвычайной неопределенности, где гибкость
           может оказаться решающей.
         </p>
-      </div>
+      </UiSection>
     </div>
   );
 };

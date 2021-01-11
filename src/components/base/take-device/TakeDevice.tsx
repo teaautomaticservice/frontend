@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import classNames from 'classnames';
 
 import { UiSection } from '~/components/ui/section/UiSection';
 import { UiInput } from '~/components/ui/input/UiInput';
 import { UiButton } from '~/components/ui/button/UiButton';
 import { UiRadio, TabItem, onRadioChange } from '~/components/ui/radio/UiRadio';
+import { UiCheckbox } from '~/components/ui/checkbox/UiCheckbox';
+import { UiTextarea } from '~/components/ui/textarea/UiTextarea';
 
 import {
   PostTakedNotebook,
@@ -77,8 +80,14 @@ const TakeDevice: React.FC = () => {
             </div>
           )}
           <UiSection.Container label="Устройство:">
+            <UiCheckbox
+              ref={register()}
+              className={styles.takeDevice__formItem}
+              label="Не ликвид"
+              name="isNotLiquid"
+            />
             <UiInput
-              ref={register({ required: true })}
+              ref={register()}
               className={styles.takeDevice__formItem}
               type="text"
               name="model"
@@ -91,6 +100,15 @@ const TakeDevice: React.FC = () => {
               name="costOfBuying"
               placeholder="Стоимость выкупа"
             />
+            <UiTextarea
+              ref={register()}
+              className={classNames(
+                styles.takeDevice__formItem,
+                styles.takeDevice__notes
+              )}
+              placeholder="Комментарий к устройству"
+              name="notebookNotes"
+            />
           </UiSection.Container>
 
           <UiSection.Container label="Клиент:">
@@ -102,18 +120,27 @@ const TakeDevice: React.FC = () => {
               // onChange={onRadioChangeHandler}
             />
             <UiInput
-              ref={register({ required: true })}
+              ref={register()}
               className={styles.takeDevice__formItem}
               type="text"
               name="name"
               placeholder="Имя"
             />
             <UiInput
-              ref={register({ required: true })}
+              ref={register()}
               className={styles.takeDevice__formItem}
               type="text"
               name="surname"
               placeholder="Фамилия"
+            />
+            <UiTextarea
+              ref={register()}
+              className={classNames(
+                styles.takeDevice__formItem,
+                styles.takeDevice__notes
+              )}
+              placeholder="Комментарий к клиенту"
+              name="clientNotes"
             />
           </UiSection.Container>
           <UiButton type="submit" label="Принять" />
