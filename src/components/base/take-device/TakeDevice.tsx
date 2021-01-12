@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import classNames from 'classnames';
 
 import { UiSection } from '~/components/ui/section/UiSection';
 import { UiInput } from '~/components/ui/input/UiInput';
@@ -102,10 +101,8 @@ const TakeDevice: React.FC = () => {
             />
             <UiTextarea
               ref={register()}
-              className={classNames(
-                styles.takeDevice__formItem,
-                styles.takeDevice__notes
-              )}
+              className={styles.takeDevice__formItem}
+              height="140px"
               placeholder="Комментарий к устройству"
               name="notebookNotes"
             />
@@ -118,6 +115,11 @@ const TakeDevice: React.FC = () => {
               register={register}
               className={styles.takeDevice__formItem}
               // onChange={onRadioChangeHandler}
+            />
+            <UiCheckbox
+              className={styles.takeDevice__formItem}
+              label="Постоянный"
+              name="isRegularClient"
             />
             <UiInput
               ref={register()}
@@ -135,10 +137,8 @@ const TakeDevice: React.FC = () => {
             />
             <UiTextarea
               ref={register()}
-              className={classNames(
-                styles.takeDevice__formItem,
-                styles.takeDevice__notes
-              )}
+              className={styles.takeDevice__formItem}
+              height="140px"
               placeholder="Комментарий к клиенту"
               name="clientNotes"
             />
