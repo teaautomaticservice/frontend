@@ -39,6 +39,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 0,
     '@typescript-eslint/no-empty-interface': 0,
     'jsx-a11y/label-has-associated-control': 0,
+    'jsx-a11y/control-has-associated-label': 0,
     'no-plusplus': 0,
     'prettier/prettier': [
       'error',

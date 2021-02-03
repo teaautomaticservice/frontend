@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { UiSection } from '~/components/ui/section/UiSection';
+import { UiSelect } from '~/components/ui/select/UiSelect';
 import { UiInput } from '~/components/ui/input/UiInput';
 import { UiButton } from '~/components/ui/button/UiButton';
 import { UiRadio, TabItem, onRadioChange } from '~/components/ui/radio/UiRadio';
@@ -85,6 +86,7 @@ const TakeDevice: React.FC = () => {
               label="Не ликвид"
               name="isNotLiquid"
             />
+            <UiSelect name="mark" />
             <UiInput
               ref={register()}
               className={styles.takeDevice__formItem}
