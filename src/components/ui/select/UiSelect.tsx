@@ -7,6 +7,8 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
+import ArrowDropDownSVG from '~/components/svg/arrow-drop-down.svg';
+
 import styles from './UiSelect.scss';
 import { UiSelectOption } from './option/UiSelectOption';
 
@@ -29,9 +31,10 @@ const UiSelectComponent: ForwardRef = forwardRef(
   ({ className, name, children }, ref) => {
     return (
       <div className={classNames(styles.uiSelect, className)}>
-        <select ref={ref} name={name}>
+        <select className={styles.uiSelect__select} ref={ref} name={name}>
           {children}
         </select>
+        <ArrowDropDownSVG className={styles.uiSelect__dropDownIcon} />
       </div>
     );
   }

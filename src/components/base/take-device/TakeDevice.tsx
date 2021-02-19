@@ -102,7 +102,11 @@ const TakeDevice: React.FC = () => {
               label="Не ликвид"
               name="isNotLiquid"
             />
-            <UiSelect ref={register()} name="mark">
+            <UiSelect
+              ref={register()}
+              className={styles.takeDevice__formItem}
+              name="mark"
+            >
               {markSelectOptions}
             </UiSelect>
             <UiInput
