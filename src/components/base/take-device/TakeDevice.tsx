@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 
 import { UiSection } from '~/components/ui/section/UiSection';
 import { UiSelect } from '~/components/ui/select/UiSelect';
+import { Props as UiSelectProps } from '~/components/ui/select/option/UiSelectOption';
 import { UiInput } from '~/components/ui/input/UiInput';
 import { UiButton } from '~/components/ui/button/UiButton';
 import { UiRadio, TabItem, onRadioChange } from '~/components/ui/radio/UiRadio';
@@ -41,6 +42,17 @@ const clientTypeRadioItems: TabItem<ClientType>[] = [
   },
 ];
 
+const markSelectItems: UiSelectProps[] = [
+  {
+    value: 'acer',
+    label: 'Acer',
+  },
+  {
+    value: 'asus',
+    label: 'Asus',
+  },
+];
+
 const TakeDevice: React.FC = () => {
   const defaultHeading = subtypeRadioItems.filter(
     ({ defaultChecked }) => defaultChecked === true
@@ -62,6 +74,10 @@ const TakeDevice: React.FC = () => {
     // eslint-disable-next-line no-console
     console.log('Submit!', data)
   );
+
+  const markSelectOptions = markSelectItems.map((props) => (
+    <UiSelect.Option key={props.value} {...props} />
+  ));
 
   return (
     <div className={styles.takeDevice}>
@@ -86,7 +102,9 @@ const TakeDevice: React.FC = () => {
               label="Не ликвид"
               name="isNotLiquid"
             />
-            <UiSelect name="mark" />
+            <UiSelect ref={register()} name="mark">
+              {markSelectOptions}
+            </UiSelect>
             <UiInput
               ref={register()}
               className={styles.takeDevice__formItem}
