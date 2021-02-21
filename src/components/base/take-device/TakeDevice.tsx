@@ -44,6 +44,10 @@ const clientTypeRadioItems: TabItem<ClientType>[] = [
 
 const markSelectItems: UiSelectProps[] = [
   {
+    value: '',
+    label: 'Марка',
+  },
+  {
     value: 'acer',
     label: 'Acer',
   },
@@ -95,78 +99,86 @@ const TakeDevice: React.FC = () => {
               />
             </div>
           )}
-          <UiSection.Container label="Устройство:">
-            <UiCheckbox
-              ref={register()}
-              className={styles.takeDevice__formItem}
-              label="Не ликвид"
-              name="isNotLiquid"
-            />
-            <UiSelect
-              ref={register()}
-              className={styles.takeDevice__formItem}
-              name="mark"
+          <div className={styles.takeDevice__contentWrapper}>
+            <UiSection.Container
+              className={styles.takeDevice__contentContainer}
+              label="Устройство:"
             >
-              {markSelectOptions}
-            </UiSelect>
-            <UiInput
-              ref={register()}
-              className={styles.takeDevice__formItem}
-              type="text"
-              name="model"
-              placeholder="Модель"
-            />
-            <UiInput
-              ref={register()}
-              className={styles.takeDevice__formItem}
-              type="text"
-              name="costOfBuying"
-              placeholder="Стоимость выкупа"
-            />
-            <UiTextarea
-              ref={register()}
-              className={styles.takeDevice__formItem}
-              height="140px"
-              placeholder="Комментарий к устройству"
-              name="notebookNotes"
-            />
-          </UiSection.Container>
+              <UiCheckbox
+                ref={register()}
+                className={styles.takeDevice__formItem}
+                label="Не ликвид"
+                name="isNotLiquid"
+              />
+              <UiSelect
+                ref={register()}
+                className={styles.takeDevice__formItem}
+                name="mark"
+              >
+                {markSelectOptions}
+              </UiSelect>
+              <UiInput
+                ref={register()}
+                className={styles.takeDevice__formItem}
+                type="text"
+                name="model"
+                placeholder="Модель"
+              />
+              <UiInput
+                ref={register()}
+                className={styles.takeDevice__formItem}
+                type="text"
+                name="costOfBuying"
+                placeholder="Стоимость выкупа"
+              />
+              <UiTextarea
+                ref={register()}
+                className={styles.takeDevice__formItem}
+                height="140px"
+                placeholder="Комментарий к устройству"
+                name="notebookNotes"
+              />
+            </UiSection.Container>
 
-          <UiSection.Container label="Клиент:">
-            <UiRadio
-              name="clientType"
-              items={clientTypeRadioItems}
-              register={register}
-              className={styles.takeDevice__formItem}
-              // onChange={onRadioChangeHandler}
-            />
-            <UiCheckbox
-              className={styles.takeDevice__formItem}
-              label="Постоянный"
-              name="isRegularClient"
-            />
-            <UiInput
-              ref={register()}
-              className={styles.takeDevice__formItem}
-              type="text"
-              name="name"
-              placeholder="Имя"
-            />
-            <UiInput
-              ref={register()}
-              className={styles.takeDevice__formItem}
-              type="text"
-              name="surname"
-              placeholder="Фамилия"
-            />
-            <UiTextarea
-              ref={register()}
-              className={styles.takeDevice__formItem}
-              height="140px"
-              placeholder="Комментарий к клиенту"
-              name="clientNotes"
-            />
-          </UiSection.Container>
+            <UiSection.Container
+              className={styles.takeDevice__contentContainer}
+              label="Клиент:"
+            >
+              <UiRadio
+                name="clientType"
+                items={clientTypeRadioItems}
+                register={register}
+                className={styles.takeDevice__formItem}
+                // onChange={onRadioChangeHandler}
+              />
+              <UiCheckbox
+                className={styles.takeDevice__formItem}
+                label="Постоянный"
+                name="isRegularClient"
+              />
+              <UiInput
+                ref={register()}
+                className={styles.takeDevice__formItem}
+                type="text"
+                name="name"
+                placeholder="Имя"
+              />
+              <UiInput
+                ref={register()}
+                className={styles.takeDevice__formItem}
+                type="text"
+                name="surname"
+                placeholder="Фамилия"
+              />
+              <UiTextarea
+                ref={register()}
+                className={styles.takeDevice__formItem}
+                height="140px"
+                placeholder="Комментарий к клиенту"
+                name="clientNotes"
+              />
+            </UiSection.Container>
+          </div>
           <UiButton type="submit" label="Принять" />
         </form>
       </UiSection>

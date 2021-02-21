@@ -1,16 +1,37 @@
 .ui-select {
-  position: relative;
   width: 100%;
 
+  &__wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  &__heading-container {
+    margin-bottom: 6px;
+  }
+
+  &__drop-down-icon {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    fill: $brand;
+    transform: translateY(-50%);
+  }
+
   &__select {
+    position: relative;
     padding: 20px;
     width: 100%;
     border: 1px solid $separator;
     border-radius: $borderRadius;
     appearance: none;
-  }
 
-  &__drop-down-icon {
-    fill: $brand;
+    &:hover {
+      border-color: $brand;
+    }
+
+    &:focus {
+      box-shadow: $highlightedShadow;
+    }
   }
 }

@@ -15,6 +15,7 @@ import { UiSelectOption } from './option/UiSelectOption';
 export interface Props {
   name: string;
   className?: string;
+  label?: string;
 }
 
 type ForwardRef = ForwardRefExoticComponent<
@@ -28,13 +29,22 @@ type Composition = {
 type UiSelectComposition = ForwardRef & Composition;
 
 const UiSelectComponent: ForwardRef = forwardRef(
-  ({ className, name, children }, ref) => {
+  ({ className, name, children, label }, ref) => {
+    const isHeadingView = label !== undefined;
+
     return (
       <div className={classNames(styles.uiSelect, className)}>
-        <select className={styles.uiSelect__select} ref={ref} name={name}>
-          {children}
-        </select>
-        <ArrowDropDownSVG className={styles.uiSelect__dropDownIcon} />
+        {isHeadingView && (
+          <div className={styles.uiSelect__headingContainer}>
+            <span>{label}</span>
+          </div>
+        )}
+        <div className={styles.uiSelect__wrapper}>
+          <ArrowDropDownSVG className={styles.uiSelect__dropDownIcon} />
+          <select className={styles.uiSelect__select} ref={ref} name={name}>
+            {children}
+          </select>
+        </div>
       </div>
     );
   }
