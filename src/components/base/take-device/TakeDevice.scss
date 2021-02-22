@@ -1,11 +1,12 @@
 .take-device {
+  position: relative;
+
   &__section {
     border-radius: 0 $borderRadius $borderRadius $borderRadius;
   }
 
   &__heading {
     display: flex;
-    align-items: center;
     margin-bottom: $mainSize;
   }
 

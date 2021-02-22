@@ -16,7 +16,7 @@ const cardsData: CardData[] = [
     label: 'Добавить',
   },
   {
-    to: '#',
+    to: '/devices',
     label: 'Устройства',
   },
   {
