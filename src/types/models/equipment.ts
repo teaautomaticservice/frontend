@@ -43,17 +43,17 @@ export type Organization = {
 };
 
 export type Notebook = {
-  id?: number;
+  id?: string;
   subtype: Subtype;
   isNotLiquid: boolean;
   mark: string;
   model: string;
   notes?: string[];
   storageLocation?: string;
-  costOfBuying?: string;
+  costOfBuying?: number;
   requiredDetails?: Detail[];
-  costOfRepairing?: string;
-  salePrice?: string;
+  costOfRepairing?: number;
+  salePrice?: number;
   client?: Client | Organization;
 };
 
@@ -67,7 +67,7 @@ export interface PostTakedNotebook {
   mark: string;
   model: string;
   storageLocation: string;
-  costOfBuying: string;
+  costOfBuying: number;
   clientType: ClientType;
   client: Client | Organization;
   notebookNotes: string;

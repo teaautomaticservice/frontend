@@ -1,13 +1,22 @@
 import React from 'react';
 
 import styles from './UiTable.scss';
+import { UiTableRow } from './row/UiTableRow';
 
 interface Props {
   label?: string;
   heading?: string[];
 }
 
-const UiTable: React.FC<Props> = ({ label, heading }) => {
+type Composition = {
+  Row: typeof UiTableRow;
+};
+
+const UiTable: React.FC<Props> & Composition = ({
+  label,
+  heading,
+  children,
+}) => {
   const isHeadingView = Array.isArray(heading);
 
   const headingEls = heading?.map((phrase) => (
@@ -25,13 +34,14 @@ const UiTable: React.FC<Props> = ({ label, heading }) => {
           </caption>
         )}
         {isHeadingView && (
-          <tr>
-            <th>{headingEls}</th>
-          </tr>
+          <thead className={styles.uiTable__heading}>{headingEls}</thead>
         )}
+        <tbody>{children}</tbody>
       </table>
     </div>
   );
 };
+
+UiTable.Row = UiTableRow;
 
 export { UiTable };
