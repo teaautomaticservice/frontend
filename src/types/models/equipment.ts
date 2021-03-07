@@ -20,8 +20,14 @@ export type Detail = {
   deliveryDate: Date | null;
 };
 
-export type Client = {
+export enum ClientType {
+  Person = 'person',
+  Organization = 'organization',
+}
+
+export type Person = {
   id?: string;
+  type: ClientType.Person;
   name: string;
   surname: string;
   phone: string;
@@ -32,6 +38,7 @@ export type Client = {
 
 export type Organization = {
   id?: string;
+  type: ClientType.Organization;
   organizationName: string;
   organizationPhone: string;
   organizationAddress: string;
@@ -41,6 +48,8 @@ export type Organization = {
   isRegularCustomer: boolean;
   notes: string[];
 };
+
+export type Client = Person | Organization;
 
 export type Notebook = {
   id?: string;
@@ -54,13 +63,8 @@ export type Notebook = {
   requiredDetails?: Detail[];
   costOfRepairing?: number;
   salePrice?: number;
-  client?: Client | Organization;
+  client?: Client;
 };
-
-export enum ClientType {
-  Organization = 'Organization',
-  Individual = 'Individual',
-}
 export interface PostTakedNotebook {
   subtype: Subtype;
   isNotLiquid: boolean;
@@ -68,8 +72,7 @@ export interface PostTakedNotebook {
   model: string;
   storageLocation: string;
   costOfBuying: number;
-  clientType: ClientType;
-  client: Client | Organization;
+  client: Client;
   notebookNotes: string;
   clientNotes: string;
 }

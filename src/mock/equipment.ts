@@ -1,4 +1,9 @@
-import { Notebook, Subtype } from '~/types/models/equipment';
+import {
+  Notebook,
+  Subtype,
+  Person,
+  ClientType,
+} from '~/types/models/equipment';
 
 const notebook: Notebook = {
   mark: 'MSI',
@@ -7,8 +12,9 @@ const notebook: Notebook = {
   isNotLiquid: false,
 };
 
-const clientIvan = {
+const clientIvan: Person = {
   id: '1',
+  type: ClientType.Person,
   name: 'Иван',
   surname: 'Иванов',
   phone: '79112113141',

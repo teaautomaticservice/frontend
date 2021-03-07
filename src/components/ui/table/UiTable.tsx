@@ -20,7 +20,7 @@ const UiTable: React.FC<Props> & Composition = ({
   const isHeadingView = Array.isArray(heading);
 
   const headingEls = heading?.map((phrase) => (
-    <th>
+    <th key={phrase}>
       <h4>{phrase}</h4>
     </th>
   ));
@@ -34,7 +34,9 @@ const UiTable: React.FC<Props> & Composition = ({
           </caption>
         )}
         {isHeadingView && (
-          <thead className={styles.uiTable__heading}>{headingEls}</thead>
+          <thead className={styles.uiTable__heading}>
+            <tr>{headingEls}</tr>
+          </thead>
         )}
         <tbody>{children}</tbody>
       </table>

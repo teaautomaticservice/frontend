@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Notebook } from '~/types/models/equipment';
 import { UiTable } from '~/components/ui/table/UiTable';
+import { monetaryFormat, getFullNameFromClient } from '~/helpers/format';
 
 import styles from './DevicesRow.scss';
 
@@ -13,47 +14,34 @@ const DevicesRow: React.FC<Props> = ({
   isNotLiquid,
   mark,
   model,
-  // notes,
+  notes,
   storageLocation,
   costOfBuying,
   requiredDetails,
   costOfRepairing,
   salePrice,
-  // client,
+  client,
 }) => {
-  // return (
-  //   <div className={styles.devicesRow}>
-  //     {/* <button> */}
-  //     <UiTable.Row>
-  //       <td>{id}</td>
-  //       <td>one</td>
-  //       <td>one</td>
-  //       <td>one</td>
-  //     </UiTable.Row>
-  //     {/* </button> */}
-  //   </div>
-  // );
-
-  const isNotLiquidView = isNotLiquid !== undefined;
+  const isNotLiquidView = isNotLiquid != null;
   const test = isNotLiquid ? 'Да' : 'Нет';
 
+  const cellsContent = [
+    id,
+    subtype,
+    isNotLiquidView ? test : undefined,
+    mark,
+    model,
+    notes ? notes[0] : undefined,
+    storageLocation,
+    costOfBuying ? monetaryFormat(costOfBuying) : costOfBuying,
+    requiredDetails?.toString(),
+    costOfRepairing ? monetaryFormat(costOfRepairing) : costOfBuying,
+    salePrice ? monetaryFormat(salePrice) : costOfBuying,
+    client ? getFullNameFromClient(client) : undefined,
+  ];
+
   return (
-    <UiTable.Row className={styles.devicesRow}>
-      {/* <button> */}
-      <td>{id}</td>
-      <td>{subtype}</td>
-      <td>{isNotLiquidView && test}</td>
-      <td>{mark}</td>
-      <td>{model}</td>
-      <td>{mark}</td>
-      <td>{storageLocation}</td>
-      <td>{costOfBuying}</td>
-      <td>{requiredDetails}</td>
-      <td>{costOfRepairing}</td>
-      <td>{salePrice}</td>
-      <td>{mark}</td>
-      {/* </button> */}
-    </UiTable.Row>
+    <UiTable.Row className={styles.devicesRow} cellsContent={cellsContent} />
   );
 };
 

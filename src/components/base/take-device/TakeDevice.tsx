@@ -33,7 +33,7 @@ const subtypeRadioItems: TabItem<Subtype>[] = [
 const clientTypeRadioItems: TabItem<ClientType>[] = [
   {
     label: 'Физ. лицо',
-    value: ClientType.Individual,
+    value: ClientType.Person,
     defaultChecked: true,
   },
   {

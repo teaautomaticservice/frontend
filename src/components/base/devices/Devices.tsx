@@ -22,24 +22,9 @@ const tableHeading = [
   'Клиент',
 ];
 
-// export type Notebook = {
-//   id?: string;
-//   subtype: Subtype;
-//   isNotLiquid: boolean;
-//   mark: string;
-//   model: string;
-//   notes?: string[];
-//   storageLocation?: string;
-//   costOfBuying?: number;
-//   requiredDetails?: Detail[];
-//   costOfRepairing?: number;
-//   salePrice?: number;
-//   client?: Client | Organization;
-// };
-
 const Devices: React.FC = () => {
   const devicesRowsEls = takedNotebookList.map((item) => (
-    <DevicesRow key={item.mark} {...item} />
+    <DevicesRow key={item.id} {...item} />
   ));
 
   return (
