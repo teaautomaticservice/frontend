@@ -26,15 +26,17 @@ const UiTable: React.FC<Props> & Composition = ({
   ));
 
   return (
-    <table className={styles.uiTable}>
-      {label && <caption className="h3">{label}</caption>}
-      {isHeadingView && (
-        <thead>
-          <tr>{headingEls}</tr>
-        </thead>
-      )}
-      <tbody>{children}</tbody>
-    </table>
+    <div className={styles.uiTable}>
+      <table>
+        {label && <caption className="h3">{label}</caption>}
+        {isHeadingView && (
+          <thead>
+            <tr>{headingEls}</tr>
+          </thead>
+        )}
+        <tbody>{children}</tbody>
+      </table>
+    </div>
   );
 };
 
