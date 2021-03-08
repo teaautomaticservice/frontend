@@ -23,8 +23,8 @@ const clientIvan: Person = {
   notes: [],
 };
 
-const takedNotebookList: Notebook[] = [
-  {
+const takedNotebookList = new Array<Notebook>(25)
+  .fill({
     id: '1',
     mark: 'MSI',
     model: 'GT60',
@@ -36,33 +36,49 @@ const takedNotebookList: Notebook[] = [
     notes: [],
     requiredDetails: [],
     salePrice: 6000,
-  },
-  {
-    id: '2',
-    mark: 'MSI',
-    model: 'GT60',
-    subtype: Subtype.Taked,
-    isNotLiquid: false,
-    client: clientIvan,
-    costOfBuying: 2000,
-    costOfRepairing: 1500.5,
-    notes: [],
-    requiredDetails: [],
-    salePrice: 6000,
-  },
-  {
-    id: '3',
-    mark: 'MSI',
-    model: 'GT60',
-    subtype: Subtype.Taked,
-    isNotLiquid: false,
-    client: clientIvan,
-    costOfBuying: 2000,
-    costOfRepairing: 1500.5,
-    notes: [],
-    requiredDetails: [],
-    salePrice: 6000,
-  },
-];
+  })
+  .map((data, index) => ({ ...data, id: `${index}` }));
+
+// const takedNotebookList: Notebook[] = [
+//   {
+//     id: '1',
+//     mark: 'MSI',
+//     model: 'GT60',
+//     subtype: Subtype.Taked,
+//     isNotLiquid: false,
+//     client: clientIvan,
+//     costOfBuying: 2000,
+//     costOfRepairing: 1500.5,
+//     notes: [],
+//     requiredDetails: [],
+//     salePrice: 6000,
+//   },
+//   {
+//     id: '2',
+//     mark: 'MSI',
+//     model: 'GT60',
+//     subtype: Subtype.Taked,
+//     isNotLiquid: false,
+//     client: clientIvan,
+//     costOfBuying: 2000,
+//     costOfRepairing: 1500.5,
+//     notes: [],
+//     requiredDetails: [],
+//     salePrice: 6000,
+//   },
+//   {
+//     id: '3',
+//     mark: 'MSI',
+//     model: 'GT60',
+//     subtype: Subtype.Taked,
+//     isNotLiquid: false,
+//     client: clientIvan,
+//     costOfBuying: 2000,
+//     costOfRepairing: 1500.5,
+//     notes: [],
+//     requiredDetails: [],
+//     salePrice: 6000,
+//   },
+// ];
 
 export { notebook, takedNotebookList };

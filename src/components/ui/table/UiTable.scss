@@ -1,8 +1,53 @@
 .ui-table {
+  position: relative;
   width: 100%;
   text-align: center;
+  border-spacing: 0;
 
-  table {
-    width: 100%;
+  caption {
+    text-align: left;
+    margin-bottom: $smallSize;
+  }
+
+  th,
+  td {
+    padding: $smallSize;
+  }
+
+  tbody {
+    $currentBorderColor: $separator;
+
+    tr:first-child td {
+      border-top: 1px solid $currentBorderColor;
+    }
+
+    td {
+      border-right: 1px solid $currentBorderColor;
+      border-bottom: 1px solid $currentBorderColor;
+
+      &:first-child {
+        border-left: 1px solid $currentBorderColor;
+      }
+    }
+  }
+
+  thead {
+    z-index: 1;
+
+    th {
+      $currentBorderColor: $activeBrand;
+
+      position: sticky;
+      top: 0;
+      background-color: $brand;
+      color: $textInvert;
+      border-right: 1px solid $currentBorderColor;
+      border-bottom: 1px solid $currentBorderColor;
+
+      &:first-child {
+        border-top: 1px solid $currentBorderColor;
+        border-left: 1px solid $currentBorderColor;
+      }
+    }
   }
 }
