@@ -40,8 +40,16 @@ const DevicesRow: React.FC<Props> = ({
     client ? getFullNameFromClient(client) : undefined,
   ];
 
+  // TODO: Mock handler
+  // eslint-disable-next-line no-console
+  const deviceSelect = () => console.log(id);
+
   return (
-    <UiTable.Row className={styles.devicesRow} cellsContent={cellsContent} />
+    <UiTable.Row
+      className={styles.devicesRow}
+      cellsContent={cellsContent}
+      onSelect={deviceSelect}
+    />
   );
 };
 

@@ -7,15 +7,43 @@ import styles from './UiTableRow.scss';
 
 type CellContent = string | number | null | undefined;
 
+type OnSelectHandler =
+  | React.MouseEventHandler<HTMLTableRowElement>
+  | React.KeyboardEventHandler<HTMLTableRowElement>;
+
 interface Props {
   className?: string;
   cellsContent?: CellContent[];
+  onSelect?: OnSelectHandler;
 }
 
-const UiTableRow: React.FC<Props> = ({ children, className, cellsContent }) => {
+const UiTableRow: React.FC<Props> = ({
+  children,
+  className,
+  cellsContent,
+  onSelect,
+}) => {
   if (children == null && !Array.isArray(cellsContent)) {
     throw new Error('Cells content undefined');
   }
+
+  const trModClicked = onSelect ? styles.uiTableRow_clicked : undefined;
+
+  const onClickHandler: React.MouseEventHandler<HTMLTableRowElement> = (
+    event
+  ) => {
+    if (onSelect) {
+      (onSelect as React.MouseEventHandler<HTMLTableRowElement>)(event);
+    }
+  };
+
+  const onKeyPressHandler: React.KeyboardEventHandler<HTMLTableRowElement> = (
+    event
+  ) => {
+    if (onSelect && event.key === 'Enter') {
+      (onSelect as React.KeyboardEventHandler<HTMLTableRowElement>)(event);
+    }
+  };
 
   const cellsEls =
     children ||
@@ -28,7 +56,14 @@ const UiTableRow: React.FC<Props> = ({ children, className, cellsContent }) => {
     ));
 
   return (
-    <tr className={classNames(styles.uiTableRow, className)}>{cellsEls}</tr>
+    <tr
+      tabIndex={0}
+      className={classNames(styles.uiTableRow, trModClicked, className)}
+      onClick={onClickHandler}
+      onKeyPress={onKeyPressHandler}
+    >
+      {cellsEls}
+    </tr>
   );
 };
 

@@ -1,7 +1,8 @@
 .ui-table {
   position: relative;
   width: 100%;
-  overflow-x: auto;
+  // TODO: Sticky th doesn't work
+  // overflow-x: auto;
 
   table {
     width: 100%;
@@ -19,25 +20,16 @@
     padding: $smallSize;
   }
 
-  tbody {
-    $currentBorderColor: $separator;
-
-    tr:first-child td {
-      border-top: 1px solid $currentBorderColor;
-    }
-
-    td {
-      border-right: 1px solid $currentBorderColor;
-      border-bottom: 1px solid $currentBorderColor;
-
+  thead {
+    tr:first-child th {
       &:first-child {
-        border-left: 1px solid $currentBorderColor;
+        border-radius: $borderRadius 0 0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 $borderRadius 0 0;
       }
     }
-  }
-
-  thead {
-    z-index: 1;
 
     th {
       $currentBorderColor: $activeBrand;
@@ -51,6 +43,56 @@
 
       &:first-child {
         border-top: 1px solid $currentBorderColor;
+        border-left: 1px solid $currentBorderColor;
+      }
+    }
+
+    & + tbody {
+      tr:first-child td {
+        &:first-child {
+          border-radius: 0;
+        }
+
+        &:last-child {
+          border-radius: 0;
+        }
+      }
+    }
+  }
+
+  tbody {
+    $currentBorderColor: $separator;
+
+    border-radius: $borderRadius;
+
+    tr:first-child td {
+      border-top: 1px solid $currentBorderColor;
+
+      &:first-child {
+        border-radius: $borderRadius 0 0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 $borderRadius 0 0;
+      }
+    }
+
+    tr:last-child td {
+      &:first-child {
+        border-radius: 0 0 0 $borderRadius;
+      }
+
+      &:last-child {
+        border-radius: 0 0 $borderRadius 0;
+      }
+    }
+
+    td {
+      border-top: 1px solid transparent;
+      border-right: 1px solid $currentBorderColor;
+      border-bottom: 1px solid $currentBorderColor;
+
+      &:first-child {
         border-left: 1px solid $currentBorderColor;
       }
     }
