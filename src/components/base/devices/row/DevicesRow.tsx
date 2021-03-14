@@ -4,8 +4,6 @@ import { Notebook } from '~/types/models/equipment';
 import { UiTable } from '~/components/ui/table/UiTable';
 import { monetaryFormat, getFullNameFromClient } from '~/helpers/format';
 
-import styles from './DevicesRow.scss';
-
 interface Props extends Notebook {}
 
 const DevicesRow: React.FC<Props> = ({
@@ -44,13 +42,7 @@ const DevicesRow: React.FC<Props> = ({
   // eslint-disable-next-line no-console
   const deviceSelect = () => console.log(id);
 
-  return (
-    <UiTable.Row
-      className={styles.devicesRow}
-      cellsContent={cellsContent}
-      onSelect={deviceSelect}
-    />
-  );
+  return <UiTable.Row cellsContent={cellsContent} onSelect={deviceSelect} />;
 };
 
 export { DevicesRow };

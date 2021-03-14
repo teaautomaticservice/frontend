@@ -3,6 +3,7 @@
 
   &_clicked {
     cursor: pointer;
+    user-select: none;
 
     &:hover {
       $currentBorderColor: rgba(0, 115, 177, 0.3);
@@ -29,6 +30,15 @@
 
     &:focus {
       outline-color: $activeBrand;
+    }
+  }
+
+  &_active {
+    background-color: $activeBrand;
+    color: $textInvert;
+
+    td {
+      border-color: $hoverOnBrand;
     }
   }
 }
