@@ -1,5 +1,6 @@
 .ui-table-row {
   width: 100%;
+  $parent: &;
 
   &_clicked {
     cursor: pointer;
@@ -33,12 +34,26 @@
     }
   }
 
-  &_active {
+  &#{$parent}_active {
     background-color: $activeBrand;
     color: $textInvert;
 
     td {
       border-color: $hoverOnBrand;
+    }
+
+    &:hover {
+      $currentBorderColor: $hoverOnBrand;
+
+      background-color: $activeBrand;
+
+      td {
+        border-color: $currentBorderColor;
+
+        &:first-child {
+          border-left: 1px solid $currentBorderColor;
+        }
+      }
     }
   }
 }
