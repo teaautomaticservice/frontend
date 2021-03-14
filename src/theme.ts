@@ -1,6 +1,7 @@
 const coreColors = {
   brand: '#0073b1',
   softBrand: 'rgba(0, 115, 177, 0.15)',
+  darkenSoftBrand: 'rgba(0, 115, 177, 0.3)',
   activeBrand: '#0a66c2',
   hoverOnBrand: '#004182',
   focusOnBrand: '#09223b',

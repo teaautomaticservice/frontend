@@ -7,7 +7,7 @@
     user-select: none;
 
     &:hover {
-      $currentBorderColor: rgba(0, 115, 177, 0.3);
+      $currentBorderColor: $darkenSoftBrand;
 
       background-color: $softBrand;
 
