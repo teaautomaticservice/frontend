@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { RouterHref } from '~/router/config';
-import { getProfileDetail } from '~/router/helpers';
+import { getProfileDetail } from '~/router/endpoints';
 import { Label } from '~/components/core/label/Label';
 import { UiAvatar } from '~/components/ui/avatar/UiAvatar';
 import { UiDropdown } from '~/components/ui/dropdown/UiDropdown';
