@@ -1,0 +1,14 @@
+.modal-layout {
+  display: flex;
+  margin: auto;
+  width: 600px;
+  background-color: #fff;
+  border-radius: $borderRadius;
+  box-shadow: $highlightedShadow;
+
+  &__content {
+    // display: flex;
+    width: 100%;
+    padding: 50px;
+  }
+}
