@@ -7,20 +7,20 @@ import { UiTableRow } from '../row/UiTableRow';
 interface Props {
   className?: string;
   body: CellContent[][];
-  columnKeyWithIndex?: number;
+  numberColumnKeyWithIndex?: number;
 }
 
-const UiTableBody: React.FC<Props> = ({ body, columnKeyWithIndex }) => {
+const UiTableBody: React.FC<Props> = ({ body, numberColumnKeyWithIndex }) => {
   const rowsEls = body.map((cellsContent, index) => {
     if (
-      columnKeyWithIndex &&
-      typeof cellsContent[columnKeyWithIndex] !== 'string'
+      numberColumnKeyWithIndex &&
+      typeof cellsContent[numberColumnKeyWithIndex] !== 'string'
     ) {
       throw new Error('Column key with index must be string.');
     }
 
-    const key = columnKeyWithIndex
-      ? (cellsContent[columnKeyWithIndex] as string)
+    const key = numberColumnKeyWithIndex
+      ? (cellsContent[numberColumnKeyWithIndex] as string)
       : index;
 
     return <UiTableRow key={key} cellsContent={cellsContent} />;

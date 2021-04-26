@@ -37,7 +37,7 @@ const Devices: React.FC = () => {
           caption="Принятые"
           head={tableHeading}
           body={devicesRowsContent}
-          columnKeyWithIndex={0}
+          numberColumnKeyWithIndex={0}
         />
       </UiSection>
     </div>

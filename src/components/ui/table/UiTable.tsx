@@ -11,7 +11,7 @@ interface Props {
   caption?: string;
   head?: CellContent[];
   body: CellContent[][];
-  columnKeyWithIndex?: number;
+  numberColumnKeyWithIndex?: number;
 }
 
 const UiTable: React.FC<Props> = ({
@@ -19,7 +19,7 @@ const UiTable: React.FC<Props> = ({
   caption,
   head,
   body,
-  columnKeyWithIndex,
+  numberColumnKeyWithIndex,
 }) => {
   return (
     <div className={classNames(styles.uiTable, className)}>
@@ -30,7 +30,10 @@ const UiTable: React.FC<Props> = ({
           </div>
         )}
         {Array.isArray(head) && <UiTableHead head={head} />}
-        <UiTableBody body={body} columnKeyWithIndex={columnKeyWithIndex} />
+        <UiTableBody
+          body={body}
+          numberColumnKeyWithIndex={numberColumnKeyWithIndex}
+        />
       </div>
     </div>
   );

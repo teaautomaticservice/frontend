@@ -11,7 +11,7 @@ interface Props {
 
 const UiTableRow: React.FC<Props> = ({ children, className, cellsContent }) => {
   if (children == null && !Array.isArray(cellsContent)) {
-    throw new Error('Cells content undefined');
+    throw new Error('Cells content undefined.');
   }
 
   const cellsEls =
