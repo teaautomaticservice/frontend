@@ -5,7 +5,7 @@ import { UiTable } from '~/components/ui/table/UiTable';
 import { takedNotebookList } from '~/mock/equipment';
 
 import styles from './Devices.scss';
-import { DevicesRow } from './row/DevicesRow';
+import { getRowContent } from './helpers';
 
 const tableHeading = [
   'ID',
@@ -23,9 +23,9 @@ const tableHeading = [
 ];
 
 const Devices: React.FC = () => {
-  const devicesRowsEls = takedNotebookList.map((item) => (
-    <DevicesRow key={item.id} {...item} />
-  ));
+  const devicesRowsContent = takedNotebookList.map((item) =>
+    getRowContent(item)
+  );
 
   return (
     <div className={styles.devices}>
@@ -33,9 +33,12 @@ const Devices: React.FC = () => {
         <div className={styles.devices__heading}>
           <h2>Устройства</h2>
         </div>
-        <UiTable label="Принятые" heading={tableHeading}>
-          {devicesRowsEls}
-        </UiTable>
+        <UiTable
+          caption="Принятые"
+          head={tableHeading}
+          body={devicesRowsContent}
+          columnKeyWithIndex={0}
+        />
       </UiSection>
     </div>
   );

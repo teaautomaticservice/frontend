@@ -3,25 +3,38 @@
   width: 100%;
   // TODO: Sticky th doesn't work
   // overflow-x: auto;
+  $parent: &;
 
-  table {
+  &__table {
+    display: table;
     width: 100%;
     text-align: center;
-    border-spacing: 0;
   }
 
-  caption {
+  &__caption {
+    display: table-caption;
     text-align: left;
     margin-bottom: $smallSize;
   }
 
-  th,
+  &__tr {
+    display: table-row;
+  }
+
+  &__th {
+    display: table-cell;
+    font-weight: 700;
+    padding: $smallSize;
+  }
+
   td {
     padding: $smallSize;
   }
 
-  thead {
-    tr:first-child th {
+  &__thead {
+    display: table-header-group;
+
+    #{$parent}__tr:first-child #{$parent}__th {
       &:first-child {
         border-radius: $borderRadius 0 0 0;
       }
@@ -31,7 +44,7 @@
       }
     }
 
-    th {
+    #{$parent}__th {
       $currentBorderColor: $activeBrand;
 
       position: sticky;
@@ -47,8 +60,8 @@
       }
     }
 
-    & + tbody {
-      tr:first-child td {
+    & + #{$parent}__tbody {
+      #{$parent}__tr:first-child td {
         &:first-child {
           border-radius: 0;
         }
@@ -60,12 +73,13 @@
     }
   }
 
-  tbody {
+  &__tbody {
+    display: table-row-group;
     $currentBorderColor: $separator;
 
     border-radius: $borderRadius;
 
-    tr:first-child td {
+    #{$parent}__tr:first-child td {
       border-top: 1px solid $currentBorderColor;
 
       &:first-child {
@@ -77,7 +91,7 @@
       }
     }
 
-    tr:last-child td {
+    #{$parent}__tr:last-child td {
       &:first-child {
         border-radius: 0 0 0 $borderRadius;
       }

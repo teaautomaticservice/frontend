@@ -9,7 +9,7 @@ const monetaryFormat = (number: number): string => {
   return `${number.toFixed(2)} р.`;
 };
 
-const cellFormat = (value: null | undefined | string | number): string => {
+const toString = (value: null | undefined | string | number): string => {
   if (value == null) {
     return '';
   }
@@ -32,4 +32,4 @@ const getFullNameFromClient = (client: Client): string => {
   return `${organizationName}: ${confidantSurname} ${confidantName}`;
 };
 
-export { monetaryFormat, cellFormat, getFullNameFromClient };
+export { monetaryFormat, toString, getFullNameFromClient };

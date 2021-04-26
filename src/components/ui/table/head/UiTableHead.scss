@@ -1,0 +1,36 @@
+.ui-table-head {
+  display: table-header-group;
+
+  &__tr {
+    display: table-row;
+  }
+
+  &__tr:first-child &__th {
+    &:first-child {
+      border-radius: $borderRadius 0 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 $borderRadius 0 0;
+    }
+  }
+
+  &__th {
+    display: table-cell;
+    font-weight: 700;
+    padding: $smallSize;
+    $currentBorderColor: $activeBrand;
+
+    position: sticky;
+    top: 0;
+    background-color: $brand;
+    color: $textInvert;
+    border-right: 1px solid $currentBorderColor;
+    border-bottom: 1px solid $currentBorderColor;
+
+    &:first-child {
+      border-top: 1px solid $currentBorderColor;
+      border-left: 1px solid $currentBorderColor;
+    }
+  }
+}

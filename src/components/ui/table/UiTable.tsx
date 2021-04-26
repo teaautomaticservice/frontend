@@ -1,45 +1,39 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import styles from './UiTable.scss';
-import { UiTableRow } from './row/UiTableRow';
+import { CellContent } from './types';
+import { UiTableHead } from './head/UiTableHead';
+import { UiTableBody } from './body/UiTableBody';
 
 interface Props {
-  label?: string;
-  heading?: string[];
+  className?: string;
+  caption?: string;
+  head?: CellContent[];
+  body: CellContent[][];
+  columnKeyWithIndex?: number;
 }
 
-type Composition = {
-  Row: typeof UiTableRow;
-};
-
-const UiTable: React.FC<Props> & Composition = ({
-  label,
-  heading,
-  children,
+const UiTable: React.FC<Props> = ({
+  className,
+  caption,
+  head,
+  body,
+  columnKeyWithIndex,
 }) => {
-  const isHeadingView = Array.isArray(heading);
-
-  const headingEls = heading?.map((phrase) => (
-    <th key={phrase}>
-      <h4>{phrase}</h4>
-    </th>
-  ));
-
   return (
-    <div className={styles.uiTable}>
-      <table>
-        {label && <caption className="h3">{label}</caption>}
-        {isHeadingView && (
-          <thead>
-            <tr>{headingEls}</tr>
-          </thead>
+    <div className={classNames(styles.uiTable, className)}>
+      <div className={styles.uiTable__table}>
+        {caption && (
+          <div className={classNames('h3', styles.uiTable__caption)}>
+            {caption}
+          </div>
         )}
-        <tbody>{children}</tbody>
-      </table>
+        {Array.isArray(head) && <UiTableHead head={head} />}
+        <UiTableBody body={body} columnKeyWithIndex={columnKeyWithIndex} />
+      </div>
     </div>
   );
 };
-
-UiTable.Row = UiTableRow;
 
 export { UiTable };

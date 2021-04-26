@@ -1,59 +1,36 @@
 .ui-table-row {
   width: 100%;
-  $parent: &;
+  $currentBorderColor: $separator;
 
-  &_clicked {
-    cursor: pointer;
-    user-select: none;
+  // #{$parent}__tr:first-child td {
+  //   border-top: 1px solid $currentBorderColor;
 
-    &:hover {
-      $currentBorderColor: $darkenSoftBrand;
+  //   &:first-child {
+  //     border-radius: $borderRadius 0 0 0;
+  //   }
 
-      background-color: $softBrand;
+  //   &:last-child {
+  //     border-radius: 0 $borderRadius 0 0;
+  //   }
+  // }
 
-      td {
-        border-color: $currentBorderColor;
+  // #{$parent}__tr:last-child td {
+  //   &:first-child {
+  //     border-radius: 0 0 0 $borderRadius;
+  //   }
 
-        &:first-child {
-          border-left: 1px solid $currentBorderColor;
-        }
-      }
-    }
+  //   &:last-child {
+  //     border-radius: 0 0 $borderRadius 0;
+  //   }
+  // }
 
-    &:active {
-      background-color: $activeBrand;
-      color: $textInvert;
+  td {
+    border-top: 1px solid transparent;
+    border-right: 1px solid $currentBorderColor;
+    border-bottom: 1px solid $currentBorderColor;
 
-      td {
-        border-color: $hoverOnBrand;
-      }
-    }
-
-    &:focus {
-      outline-color: $activeBrand;
-    }
-  }
-
-  &#{$parent}_active {
-    background-color: $activeBrand;
-    color: $textInvert;
-
-    td {
-      border-color: $hoverOnBrand;
-    }
-
-    &:hover {
-      $currentBorderColor: $hoverOnBrand;
-
-      background-color: $activeBrand;
-
-      td {
-        border-color: $currentBorderColor;
-
-        &:first-child {
-          border-left: 1px solid $currentBorderColor;
-        }
-      }
+    &:first-child {
+      border-left: 1px solid $currentBorderColor;
     }
   }
 }
