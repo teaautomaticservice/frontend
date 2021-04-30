@@ -19,13 +19,13 @@ const UiTableRow: React.FC<Props> = ({ children, className, cellsContent }) => {
     cellsContent?.map((content, index) => (
       // Since the order of the elements will not change, a unique key is not required.
       // eslint-disable-next-line react/no-array-index-key
-      <td key={index} className={styles.uiTableRow__cell}>
+      <div key={index} className={styles.uiTableRow__td}>
         {content}
-      </td>
+      </div>
     ));
 
   return (
-    <tr className={classNames(styles.uiTableRow, className)}>{cellsEls}</tr>
+    <div className={classNames(styles.uiTableRow, className)}>{cellsEls}</div>
   );
 };
 
