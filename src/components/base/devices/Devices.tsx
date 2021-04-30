@@ -3,11 +3,13 @@ import React from 'react';
 import { UiSection } from '~/components/ui/section/UiSection';
 import { UiTable } from '~/components/ui/table/UiTable';
 import { takedNotebookList } from '~/mock/equipment';
+import { UiCheckbox } from '~/components/ui/checkbox/UiCheckbox';
 
 import styles from './Devices.scss';
 import { getRowContent } from './helpers';
 
 const tableHeading = [
+  <UiCheckbox appearance="soft" name="selectAll" />,
   'ID',
   'Подтип',
   'Не ликивид',
@@ -20,6 +22,7 @@ const tableHeading = [
   'Стоимость восстановления',
   'Цена',
   'Клиент',
+  '',
 ];
 
 const Devices: React.FC = () => {

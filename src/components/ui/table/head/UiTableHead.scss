@@ -19,6 +19,7 @@
     display: table-cell;
     font-weight: 700;
     padding: $smallSize;
+    z-index: 1;
     $currentBorderColor: $activeBrand;
 
     position: sticky;

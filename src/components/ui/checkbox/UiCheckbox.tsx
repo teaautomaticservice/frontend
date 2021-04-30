@@ -3,8 +3,16 @@ import classNames from 'classnames';
 
 import styles from './UiCheckbox.scss';
 
+type Appearance = 'primary' | 'soft';
+
+const modifierMap: Record<Appearance, string> = {
+  primary: styles.uiCheckbox_primary,
+  soft: styles.uiCheckbox_soft,
+};
+
 interface Props {
-  label: string;
+  appearance?: Appearance;
+  label?: string;
   name: string;
   className?: string;
   defaultChecked?: boolean;
@@ -13,9 +21,26 @@ interface Props {
 }
 
 const UiCheckbox = forwardRef<HTMLInputElement, Props>(
-  ({ label, name, className, defaultChecked, checked, onChange }, ref) => {
+  (
+    {
+      appearance = 'primary',
+      label,
+      name,
+      className,
+      defaultChecked,
+      checked,
+      onChange,
+    },
+    ref
+  ) => {
     return (
-      <div className={classNames(styles.uiCheckbox, className)}>
+      <div
+        className={classNames(
+          styles.uiCheckbox,
+          modifierMap[appearance],
+          className
+        )}
+      >
         <label className={styles.uiCheckbox__label}>
           <input
             ref={ref}
@@ -28,7 +53,9 @@ const UiCheckbox = forwardRef<HTMLInputElement, Props>(
           />
           <div className={styles.uiCheckbox__wrapper}>
             <span className={styles.uiCheckbox__icon} />
-            <span className={styles.uiCheckbox__description}>{label}</span>
+            {label && (
+              <span className={styles.uiCheckbox__description}>{label}</span>
+            )}
           </div>
         </label>
       </div>
