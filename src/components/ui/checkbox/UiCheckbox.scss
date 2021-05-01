@@ -106,7 +106,6 @@
     height: 20px;
     border: 1px solid;
     border-radius: $borderRadius;
-    margin-right: 4px;
     transition:
       box-shadow $transition,
       background-color $transition,
@@ -129,6 +128,7 @@
 
   &__description {
     display: inline-block;
+    margin-left: 4px;
     transition: color $transition;
   }
 }
