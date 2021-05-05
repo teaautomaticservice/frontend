@@ -1,0 +1,9 @@
+.toolbar {
+  display: flex;
+
+  &__tab {
+    & + & {
+      margin-left: 4px;
+    }
+  }
+}

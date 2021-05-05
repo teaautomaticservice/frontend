@@ -1,0 +1,134 @@
+.ui-checkbox {
+  $parent: &;
+
+  &_primary {
+    #{$parent}__input {
+      &:checked {
+        & + #{$parent}__wrapper #{$parent}__icon {
+          background-color: $brand;
+          border-color: $brand;
+
+          &::after {
+            opacity: 1;
+          }
+        }
+      }
+
+      &:focus {
+        & + #{$parent}__wrapper #{$parent}__icon {
+          box-shadow: $focusedShadow $brand;
+        }
+      }
+
+      &:hover {
+        & + #{$parent}__wrapper #{$parent}__icon {
+          border-color: $brand;
+        }
+
+        & + #{$parent}__wrapper #{$parent}__description {
+          color: $brand;
+        }
+      }
+    }
+
+    #{$parent}__icon {
+      border-color: $separator;
+      background-color: $bgPrimary;
+
+      &::after {
+        border-color: $bgPrimary;
+      }
+    }
+  }
+
+  &_soft {
+    #{$parent}__input {
+      &:checked {
+        & + #{$parent}__wrapper #{$parent}__icon {
+          background-color: $separator;
+          border-color: $separator;
+
+          &::after {
+            opacity: 1;
+          }
+        }
+      }
+
+      &:focus {
+        & + #{$parent}__wrapper #{$parent}__icon {
+          box-shadow: $focusedShadow $bgPrimary;
+        }
+      }
+
+      &:hover {
+        & + #{$parent}__wrapper #{$parent}__icon {
+          border-color: $brand;
+        }
+
+        & + #{$parent}__wrapper #{$parent}__description {
+          color: $brand;
+        }
+      }
+    }
+
+    #{$parent}__icon {
+      border-color: $separator;
+      background-color: $separator;
+
+      &::after {
+        border-color: $activeBrand;
+      }
+    }
+  }
+
+  &__label {
+    cursor: pointer;
+  }
+
+  &__input {
+    position: fixed;
+    right: 100vw;
+    bottom: 100vh;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid;
+    border-radius: $borderRadius;
+    transition:
+      box-shadow $transition,
+      background-color $transition,
+      border-color $transition;
+
+    &::after {
+      opacity: 0;
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 15%;
+      transition: opacity $transition;
+      border-left: 2px solid;
+      border-bottom: 2px solid;
+      height: 7px;
+      width: 12px;
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__description {
+    display: inline-block;
+    margin-left: 4px;
+    transition: color $transition;
+  }
+}

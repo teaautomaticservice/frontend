@@ -1,0 +1,19 @@
+.ui-table {
+  position: relative;
+  width: 100%;
+  // TODO: Sticky th doesn't work
+  // overflow-x: auto;
+  $parent: &;
+
+  &__table {
+    display: table;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__caption {
+    display: table-caption;
+    text-align: left;
+    margin-bottom: $smallSize;
+  }
+}

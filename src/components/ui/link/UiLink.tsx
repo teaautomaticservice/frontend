@@ -1,26 +1,54 @@
 import React from 'react';
-import { Link, LinkProps } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 
 import { RouterHref } from '~/router/config';
 
 import styles from './UiLink.scss';
 
-interface Props extends LinkProps {
-  label?: string;
+type Appearance = 'label' | 'card';
+
+const modifierMap: Record<Appearance, string> = {
+  label: styles.uiLink_label,
+  card: styles.uiLink_card,
+};
+
+interface Props {
   to: RouterHref | string;
+  label?: string;
+  className?: string;
+  appearance?: Appearance;
+  isCardActive?: boolean;
 }
 
-const UiLink: React.FC<Props> = (props) => {
-  const { label, children } = props;
+const UiLink: React.FC<Props> = ({
+  to,
+  label,
+  children,
+  className,
+  appearance = 'label',
+  isCardActive = false,
+}) => {
+  const isCard = appearance === 'card';
 
-  const content = label ? (
-    <span className="font-caption">{label}</span>
+  const labelEl = isCard ? (
+    <span>{label}</span>
   ) : (
-    children
+    <span className="font-caption">{label}</span>
   );
 
+  const content = label ? labelEl : children;
+
   return (
-    <Link {...props} className={styles.uiLink}>
+    <Link
+      to={to}
+      className={classNames(
+        styles.uiLink,
+        modifierMap[appearance],
+        { [styles.uiLink_active]: isCardActive },
+        className
+      )}
+    >
       {content}
     </Link>
   );

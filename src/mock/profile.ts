@@ -1,4 +1,4 @@
-import { User } from '~/types/contracts/profile';
+import { User } from '~/types/models/profile';
 
 const user: User = {
   name: 'Иван',

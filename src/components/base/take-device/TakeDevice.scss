@@ -1,0 +1,33 @@
+.take-device {
+  position: relative;
+
+  &__section {
+    border-radius: 0 $borderRadius $borderRadius $borderRadius;
+  }
+
+  &__heading {
+    display: flex;
+    margin-bottom: $mainSize;
+  }
+
+  &__content-wrapper {
+    display: flex;
+    margin: 0 -10px;
+    width: 100%;
+  }
+
+  &__content-container {
+    padding: 0 10px;
+    flex: 1 1 100%;
+  }
+
+  &__radio {
+    margin-left: auto;
+  }
+
+  &__form-item {
+    & + & {
+      margin-top: $smallSize;
+    }
+  }
+}

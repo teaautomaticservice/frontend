@@ -1,0 +1,23 @@
+.ui-table-row {
+  display: table-row;
+  width: 100%;
+  transition: background-color $transition;
+  $currentBorderColor: $separator;
+
+  &:hover {
+    background-color: $bgSecondary;
+  }
+
+  &__td {
+    display: table-cell;
+    padding: $smallSize;
+    border-top: 1px solid transparent;
+    border-right: 1px solid $currentBorderColor;
+    border-bottom: 1px solid $currentBorderColor;
+    vertical-align: middle;
+
+    &:first-child {
+      border-left: 1px solid $currentBorderColor;
+    }
+  }
+}

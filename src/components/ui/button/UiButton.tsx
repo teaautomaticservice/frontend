@@ -3,9 +3,9 @@ import classNames from 'classnames';
 
 import styles from './UiButton.scss';
 
-type UiButtonAppearance = 'primary' | 'soft' | 'edit';
+type Appearance = 'primary' | 'soft' | 'edit';
 
-const modifierMap: Record<UiButtonAppearance, string> = {
+const modifierMap: Record<Appearance, string> = {
   primary: styles.uiButton_primary,
   soft: styles.uiButton_soft,
   edit: styles.uiButton_labelOnly,
@@ -16,7 +16,7 @@ export interface Props
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  appearance?: UiButtonAppearance;
+  appearance?: Appearance;
   label?: string;
 }
 

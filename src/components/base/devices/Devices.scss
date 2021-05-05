@@ -1,0 +1,11 @@
+.devices {
+  position: relative;
+
+  &__section {
+    border-radius: 0 $borderRadius $borderRadius $borderRadius;
+  }
+
+  &__heading {
+    margin-bottom: $mainSize;
+  }
+}

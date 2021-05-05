@@ -5,9 +5,11 @@ import { PagesAuthorization } from '~/components/pages/authorization/PagesAuthor
 import { PagesAbout } from '~/components/pages/about/PagesAbout';
 import { PagesUiPreview } from '~/components/pages/ui/PagesUiPreview';
 import { PagesProfileDetail } from '~/components/pages/profile-detail/PagesProfileDetail';
+import { PagesDevices } from '~/components/pages/devices/PagesDevices';
 
 enum RouterHref {
   Main = '/',
+  Devices = '/devices',
   Authorization = '/authorization',
   About = '/about',
   UiPreview = '/ui-preview',
@@ -24,6 +26,10 @@ const routerConfig: RouterConfig[] = [
   {
     href: RouterHref.Main,
     component: PagesMain,
+  },
+  {
+    href: RouterHref.Devices,
+    component: PagesDevices,
   },
   {
     href: RouterHref.Authorization,
