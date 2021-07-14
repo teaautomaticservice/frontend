@@ -1,7 +1,7 @@
 import { Store, is, createEffect, createEvent } from "effector";
 import { useStore } from "effector-react";
 
-export const useCustomStore<State> = (store: Store<State>) => {
+export const useCustomStore = <State, Item>(store: Store<State>) => {
   if (!is.store(store)) {
     throw Error("argument should be a store");
   }
@@ -21,10 +21,10 @@ export const useCustomStore<State> = (store: Store<State>) => {
   updateFx.use(fetchApi);
 
   store
-    .on(fetchFx.doneData, (state, payload: any[]) => {
+    .on(fetchFx.doneData, (_, payload: Item[] | Item) => {
       return [...payload];
     })
-    .on(updateFx.doneData, (state, payload: any[]) => {
+    .on(updateFx.doneData, (state, payload: Item[] | Item) => {
       return [state, ...payload];
     })
     .reset(clearStore);
