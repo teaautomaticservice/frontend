@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { UiSection } from '~/components/ui/section/UiSection';
 import { UiTable } from '~/components/ui/table/UiTable';
@@ -30,13 +30,21 @@ const tableHeading = [
 ];
 
 const Devices: React.FC = () => {
-  const { currentStore: notebooks, clearStore } = useCustomStore<Notebook>(
-    devicesStore
-  );
+  const {
+    currentStore: notebooks,
+    fetchFx: fetchNotebooks,
+    clearStore,
+  } = useCustomStore<Notebook>(devicesStore);
 
   const devicesRowsContent = Array.isArray(notebooks)
     ? notebooks.map((item) => getRowContent(item))
     : [getRowContent(notebooks)];
+
+  useEffect(() => {
+    fetchNotebooks(
+      'https://6065cf72b8fbbd0017567746.mockapi.io/testapi/occasion/notebooks'
+    );
+  }, []);
 
   const clearState = () => {
     clearStore();
