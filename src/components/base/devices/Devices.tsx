@@ -10,6 +10,7 @@ import { getRowContent } from './helpers';
 import { useCustomStore } from '~/hooks/useCustomStore';
 import { devicesStore } from '~/store/index';
 import { UiButton } from '~/components/ui/button/UiButton';
+import { Notebook } from '~/types/models/equipment';
 
 const tableHeading = [
   <UiCheckbox appearance="soft" name="selectAll" />,
@@ -29,7 +30,9 @@ const tableHeading = [
 ];
 
 const Devices: React.FC = () => {
-  const { currentStore: notebooks, clearStore } = useCustomStore(devicesStore);
+  const { currentStore: notebooks, clearStore } = useCustomStore<Notebook>(
+    devicesStore
+  );
 
   const devicesRowsContent = Array.isArray(notebooks)
     ? notebooks.map((item) => getRowContent(item))
