@@ -81,4 +81,4 @@ const takedNotebookList = new Array<Notebook>(25)
 //   },
 // ];
 
-export { notebook, takedNotebookList };
+export { notebook, takedNotebookList, clientIvan };

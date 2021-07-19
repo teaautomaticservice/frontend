@@ -1,18 +1,18 @@
-import { Store, is, createEffect, createEvent } from "effector";
-import { useStore } from "effector-react";
+import { Store, is, createEffect, createEvent } from 'effector';
+import { useStore } from 'effector-react';
 
-export const useCustomStore = <State, Item>(store: Store<State>) => {
+export const useCustomStore = <Item>(store: Store<Item[] | Item>) => {
   if (!is.store(store)) {
-    throw Error("argument should be a store");
+    throw Error('argument should be a store');
   }
 
-  const currentStore = useStore<State>(store);
+  const currentStore = useStore(store);
 
-  const fetchFx = createEffect<string, State>();
-  const updateFx = createEffect<string, State>();
+  const fetchFx = createEffect<string, Item[] | Item>();
+  const updateFx = createEffect<string, Item[] | Item>();
   const clearStore = createEvent();
 
-  async function fetchApi(endpoint: string): Promise<State> {
+  async function fetchApi(endpoint: string): Promise<Item[] | Item> {
     const response = await fetch(endpoint);
     return response.json();
   }
@@ -21,13 +21,29 @@ export const useCustomStore = <State, Item>(store: Store<State>) => {
   updateFx.use(fetchApi);
 
   store
-    .on(fetchFx.doneData, (_, payload: Item[] | Item) => {
-      return [...payload];
-    })
     .on(updateFx.doneData, (state, payload: Item[] | Item) => {
-      return [state, ...payload];
+      if (Array.isArray(payload)) {
+        if (Array.isArray(state)) {
+          return [...state, ...payload];
+        }
+        return [state, ...payload];
+      }
+      if (Array.isArray(state)) {
+        return [...state, payload];
+      }
+      return [state, payload];
     })
-    .reset(clearStore);
-
-  return {currentStore, fetchFx, updateFx, clearStore};
-}
+    .on(fetchFx.doneData, (_, payload: Item[] | Item) => {
+      if (Array.isArray(payload)) {
+        return [...payload];
+      }
+      return [payload];
+    })
+    .on(clearStore, (state) => {
+      if (Array.isArray(state)) {
+        return state.slice(state.length);
+      }
+      return [];
+    });
+  return { currentStore, fetchFx, updateFx, clearStore };
+};
