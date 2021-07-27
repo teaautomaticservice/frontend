@@ -8,7 +8,7 @@ import { UiCheckbox } from '~/components/ui/checkbox/UiCheckbox';
 import styles from './Devices.scss';
 import { getRowContent } from './helpers';
 import { useCustomStore } from '~/hooks/useCustomStore';
-import { devicesStore } from '~/store/index';
+import { store as devicesStore } from '~/store/index';
 import { UiButton } from '~/components/ui/button/UiButton';
 import { Notebook } from '~/types/models/equipment';
 
@@ -32,7 +32,7 @@ const tableHeading = [
 const Devices: React.FC = () => {
   const {
     currentStore: notebooks,
-    fetchFx: fetchNotebooks,
+    fetchDevicesfx,
     clearStore,
   } = useCustomStore<Notebook>(devicesStore);
 
@@ -41,7 +41,7 @@ const Devices: React.FC = () => {
     : [getRowContent(notebooks)];
 
   useEffect(() => {
-    fetchNotebooks(
+    fetchDevicesfx(
       'https://6065cf72b8fbbd0017567746.mockapi.io/testapi/occasion/notebooks'
     );
   }, []);

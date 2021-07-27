@@ -1,49 +1,51 @@
-import { Store, is, createEffect, createEvent } from 'effector';
+import { Store, is, createEffect, createEvent, Event } from 'effector';
 import { useStore } from 'effector-react';
 
-export const useCustomStore = <Item>(store: Store<Item[] | Item>) => {
+interface CustomStore<Item> {
+  store: Store<Item[] | Item>;
+  methods: {
+    name: string;
+    handler: (...args: any) => any | any[];
+    reducer: (state: Item[] | Item, payload: Item | Item[]) => Item | Item[];
+  }[];
+}
+
+type Props<Item> = {
+  currentStore: Item | Item[];
+  clearStore: Event<void>;
+  [fx: string]: any;
+};
+
+export const useCustomStore = <Item>(
+  customStore: CustomStore<Item>
+): Props<Item> => {
+  const { store, methods } = customStore;
+
   if (!is.store(store)) {
     throw Error('argument should be a store');
   }
 
-  const currentStore = useStore(store);
+  const effects = methods.reduce((obj, method) => {
+    const { name, handler, reducer } = method;
+    const fx = createEffect<string, Item[] | Item>();
+    fx.use(handler);
+    store.on(fx.doneData, reducer);
 
-  const fetchFx = createEffect<string, Item[] | Item>();
-  const updateFx = createEffect<string, Item[] | Item>();
+    return {
+      ...obj,
+      [`${name}fx`]: fx,
+    };
+  }, {});
+
+  const currentStore = useStore(store);
   const clearStore = createEvent();
 
-  async function fetchApi(endpoint: string): Promise<Item[] | Item> {
-    const response = await fetch(endpoint);
-    return response.json();
-  }
+  store.on(clearStore, (state) => {
+    if (Array.isArray(state)) {
+      return state.slice(state.length);
+    }
+    return [];
+  });
 
-  fetchFx.use(fetchApi);
-  updateFx.use(fetchApi);
-
-  store
-    .on(updateFx.doneData, (state, payload: Item[] | Item) => {
-      if (Array.isArray(payload)) {
-        if (Array.isArray(state)) {
-          return [...state, ...payload];
-        }
-        return [state, ...payload];
-      }
-      if (Array.isArray(state)) {
-        return [...state, payload];
-      }
-      return [state, payload];
-    })
-    .on(fetchFx.doneData, (_, payload: Item[] | Item) => {
-      if (Array.isArray(payload)) {
-        return [...payload];
-      }
-      return [payload];
-    })
-    .on(clearStore, (state) => {
-      if (Array.isArray(state)) {
-        return state.slice(state.length);
-      }
-      return [];
-    });
-  return { currentStore, fetchFx, updateFx, clearStore };
+  return { currentStore, clearStore, ...effects };
 };

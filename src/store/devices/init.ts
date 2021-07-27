@@ -18,4 +18,21 @@ const devicesStore = createStore<Notebook[] | Notebook>([]);
 //   })
 //   .map((data, index) => ({ ...data, id: `${index}` }))
 
-export { devicesStore };
+const fetchDevices = {
+  name: 'fetchDevices',
+  handler: async (endpoint: string): Promise<Notebook[] | Notebook> => {
+    const response = await fetch(endpoint);
+    return response.json();
+  },
+  reducer: (_: any, payload: Notebook[] | Notebook): Notebook[] | Notebook => {
+    if (Array.isArray(payload)) {
+      return [...payload];
+    }
+    return [payload];
+  },
+};
+
+export const store = {
+  store: devicesStore,
+  methods: [fetchDevices],
+};

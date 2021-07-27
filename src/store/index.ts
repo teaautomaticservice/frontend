@@ -1,1 +1,1 @@
-export { devicesStore } from './devices/init';
+export { store } from './devices/init';
