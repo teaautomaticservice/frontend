@@ -1,7 +1,10 @@
 import { createStore } from 'effector';
-import { Notebook } from '~/types/models/equipment';
 
-const devicesStore = createStore<Notebook[] | Notebook>([]);
+import { Notebook } from '~/types/models/equipment';
+import { CustomStore, CustomStoreMethod } from '~/types/store';
+import { createError } from '~/helpers/errorHandling';
+
+const devicesStore = createStore<Notebook[]>([]);
 // new Array<Notebook>(25)
 //   .fill({
 //     id: '1',
@@ -18,13 +21,17 @@ const devicesStore = createStore<Notebook[] | Notebook>([]);
 //   })
 //   .map((data, index) => ({ ...data, id: `${index}` }))
 
-const fetchDevices = {
+const fetchDevices: CustomStoreMethod<Notebook[]> = {
   name: 'fetchDevices',
-  handler: async (endpoint: string): Promise<Notebook[] | Notebook> => {
-    const response = await fetch(endpoint);
-    return response.json();
+  handler: async (endpoint) => {
+    if (typeof endpoint === 'string') {
+      const response = await fetch(endpoint);
+      return response.json();
+    }
+
+    return createError('Endpoint is not a string.');
   },
-  reducer: (_: any, payload: Notebook[] | Notebook): Notebook[] | Notebook => {
+  reducer: (_, payload) => {
     if (Array.isArray(payload)) {
       return [...payload];
     }
@@ -32,7 +39,11 @@ const fetchDevices = {
   },
 };
 
-export const store = {
+const methods = {
+  fetchDevices,
+}
+
+export const customStore: CustomStore<Notebook[], typeof methods> = {
   store: devicesStore,
-  methods: [fetchDevices],
+  methods,
 };

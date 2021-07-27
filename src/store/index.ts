@@ -1,1 +1,1 @@
-export { store } from './devices/init';
+export { customStore as store } from './devices/init';

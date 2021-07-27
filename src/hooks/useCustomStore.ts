@@ -1,24 +1,16 @@
-import { Store, is, createEffect, createEvent, Event } from 'effector';
+import { is, createEffect, Effect } from 'effector';
 import { useStore } from 'effector-react';
 
-interface CustomStore<Item> {
-  store: Store<Item[] | Item>;
-  methods: {
-    name: string;
-    handler: (...args: any) => any | any[];
-    reducer: (state: Item[] | Item, payload: Item | Item[]) => Item | Item[];
-  }[];
+import { CustomStore } from '~/types/store';
+
+interface AbstractStorage<State, Methods> {
+  state: State;
+  methods: Methods;
 }
 
-type Props<Item> = {
-  currentStore: Item | Item[];
-  clearStore: Event<void>;
-  [fx: string]: any;
-};
-
-export const useCustomStore = <Item>(
-  customStore: CustomStore<Item>
-): Props<Item> => {
+export const useCustomStore = <State, Methods>(
+  customStore: CustomStore<State>
+): AbstractStorage<State> => {
   const { store, methods } = customStore;
 
   if (!is.store(store)) {
@@ -27,25 +19,17 @@ export const useCustomStore = <Item>(
 
   const effects = methods.reduce((obj, method) => {
     const { name, handler, reducer } = method;
-    const fx = createEffect<string, Item[] | Item>();
-    fx.use(handler);
-    store.on(fx.doneData, reducer);
+    const effect = createEffect<unknown, State>();
+    effect.use(handler);
+    store.on(effect.doneData, reducer);
 
     return {
       ...obj,
-      [`${name}fx`]: fx,
+      [name]: effect,
     };
   }, {});
 
-  const currentStore = useStore(store);
-  const clearStore = createEvent();
+  const state = useStore(store);
 
-  store.on(clearStore, (state) => {
-    if (Array.isArray(state)) {
-      return state.slice(state.length);
-    }
-    return [];
-  });
-
-  return { currentStore, clearStore, ...effects };
+  return { state, methods };
 };

@@ -30,36 +30,28 @@ const tableHeading = [
 ];
 
 const Devices: React.FC = () => {
-  const {
-    currentStore: notebooks,
-    fetchDevicesfx,
-    clearStore,
-  } = useCustomStore<Notebook>(devicesStore);
+  const { state: notebooks, methods: notebooksMethods } = useCustomStore(
+    devicesStore
+  );
+
+  const {  } = notebooksMethods;
 
   const devicesRowsContent = Array.isArray(notebooks)
     ? notebooks.map((item) => getRowContent(item))
     : [getRowContent(notebooks)];
 
   useEffect(() => {
-    fetchDevicesfx(
+    fetchDevicesEffect(
       'https://6065cf72b8fbbd0017567746.mockapi.io/testapi/occasion/notebooks'
     );
   }, []);
 
-  const clearState = () => {
-    clearStore();
-  };
 
   return (
     <div className={styles.devices}>
       <UiSection className={styles.devices__section}>
         <div className={styles.devices__heading}>
           <h2>Устройства</h2>
-          <UiButton
-            onClick={clearState}
-            label="Очистить таблицу"
-            className={styles.devices__clearButton}
-          />
         </div>
         <UiTable
           caption="Принятые"
